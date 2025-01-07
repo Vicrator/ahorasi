@@ -1,0 +1,159 @@
+:root{
+    --tamaño_header:100px;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+header{
+    display: flex;
+    position: relative;
+    height: var(--tamaño_header);
+    
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 50px;  
+    flex-wrap: wrap;
+}
+
+header .logo img{
+    height: 100px;
+}
+
+header .menu ul li a{
+    text-decoration: none;
+    color: black; 
+    font-weight: 700;
+    
+}
+header .menu ul li a:hover{
+    text-decoration: none;
+    color: orange;    
+}
+
+header .menu ul li{
+    list-style: none;
+    display: inline-block;
+    font-size: 25px;
+    margin: 0px 40px;
+}
+
+header .sesion i{
+    font-size: 40px;
+}
+header .sesion a{
+    color: black;
+}
+header .sesion a:hover{
+    color: orange;
+}
+
+/*Carrusel*/
+.contenedor{
+    width: 300px;
+}
+
+
+@media (max-width:500px) {
+
+    header ul{
+        display: inline;
+    }
+    
+}
+
+
+.menu_hamburguesa{
+    font-size: 50px;
+    
+}
+.menuresp{
+    display: none;
+}
+.menu_responsive{
+    display: none;
+}
+
+.menu .sesion{
+    display: none;
+}
+
+@media (max-width:860px) {
+
+    header{
+        background-color: gainsboro;
+    }
+    .menuresp{
+        display: block;
+    }
+    .menu{
+        background-color:gainsboro;
+        height: 0;
+        overflow: hidden;
+        /*height: 100vh;*/
+        
+        width: 100%;
+        position: absolute;
+        top:var(--tamaño_header);
+        left: 0px;
+        z-index: 10;
+    }
+    .menus{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .menus a{
+        font-size: 40px;
+    }
+
+    .menu .sesion i{
+        font-size: 70px;
+    }
+
+    .sesionmenu{
+        display: none !important; 
+    }
+    .menu .sesion{
+        display: block;
+    }
+
+    .menu_responsive:checked + .menu{
+        height: 100vh;
+    }
+
+    .botonmenuresp{
+        display: none;
+    }
+
+}
+/*
+.contenidocarr{
+    height: 500px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.carrusel{
+    height: 60%;
+    width: 80%;
+    
+}
+.content-carrusel{
+    display: flex;
+    width: 400%;
+    height: 100%;
+    border:5px solid red;
+}
+
+.content-carrusel img{
+    width: (100%/4);
+    
+    
+}
+*/

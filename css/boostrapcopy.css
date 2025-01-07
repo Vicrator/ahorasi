@@ -1,0 +1,180 @@
+body{
+    padding: 0px;
+    margin: 0px;
+}
+.contenedor{
+    width: 100%;
+    height: 400px;
+    padding: 25px 0px;
+}
+.contenedor img{
+    height: 350px;
+}
+
+.contenedor .carousel-indicators [data-bs-target] {
+    background-color: black;
+}
+
+
+.contenedor p{
+    display: inline-block ;
+    width: 60px;
+    font-size: 40px;
+    font-weight: 100;
+    background-color:black;
+    border-radius: 50px;
+    
+    color:white;
+}
+
+
+/*Bajo*/
+
+.Menu_vertical{
+    display: none;
+    list-style: none;
+    text-decoration: none;
+    padding: 2px;
+    
+}
+.sesion{
+    display: flex;
+    position: relative;
+    width: 150px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+
+.sesion:hover > .Menu_vertical{
+    position: absolute;
+    bottom: -20px;
+    display: flex;
+    background-color: antiquewhite;
+}
+.sesiones{
+    font-size: 30px !important;
+    display: flex;
+    
+    justify-content: center;
+}
+
+.Menu_vertical a{
+    list-style: none;
+}
+
+    
+
+
+.beneficios{
+    display: flex;
+    justify-content: space-around;
+}
+.ofrecemos{
+    margin-bottom: 50px;
+}
+
+.ofrecemos .contenido{
+    width: 300px;
+}
+.ofrecemos i{
+    display: inline-block;
+    width: 100%;
+    font-size: 50px;
+    color: red;
+    text-align: center;
+}
+
+.ofrecemos h1{
+    text-align: center;
+    margin: 10px 0px 40px 0px;
+    font-size: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serifS;
+}
+.beneficios p{
+    text-align: justify;
+}
+
+
+.cont .container-fluid{
+    display: flex !important;
+    justify-content: space-around;
+    background-color: gray;
+    padding-top: 50px;
+    padding-bottom:  50px;
+}
+
+.container-fluid{
+    background-color: black;
+}
+.piedepagina{
+    height: 200px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.piedepagina div{
+    width: 300px;
+}
+.terminos{
+    display: flex;
+    justify-items: center;
+    flex-wrap: wrap;
+    margin: 30px 0px;
+}
+.terminos a{
+    display: block;
+    text-decoration: none;
+    color:white;
+    font-size: 17px;
+    text-align: center;
+    width: 100%;
+
+}
+.terminos a:hover{
+    text-decoration: wavy;
+    color: blue;
+}
+
+.piedepagina .logo{
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+}
+.redes{
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+}
+.redes i{
+    font-size: 35px;
+    color: white;
+}
+
+@media (max-width:580px) {
+    .redes{
+        display: block;
+    }
+    .redes i{
+        display:block;
+        font-size: 20px;
+        margin: 15px 0px;
+    }
+    .logo{
+        display: flex;
+        justify-items: center;
+        align-items: center;
+    }
+    .logo img{
+        height: 70%;
+    }
+
+    .terminos a{
+        font-size: 15px;
+    }
+    .logo{
+        order: -1;
+    }
+}

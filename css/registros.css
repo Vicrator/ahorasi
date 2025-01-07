@@ -1,0 +1,84 @@
+body{
+    margin: 0;
+    padding: 0;
+    /*background:linear-gradient(150deg,#2575aa ,#cfa90e );*/
+    background:linear-gradient(150deg, #ecf0f1 ,#797d7f );
+    height: 100vh;
+}
+.formularioclass{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 600px;
+    background-color: white;
+    border-radius: 10px;
+    font-family: sans-serif;
+}
+.formularioclass h1{
+    text-align: center;
+    border-bottom: 1px solid silver;
+    padding: 30px 0px 30px 0px;
+}
+.formularioclass form{
+    padding: 0px 50px;
+    
+}
+.formularioclass .inputt{
+    position: relative;
+    margin: 15px 0px;
+    border-bottom: 1px solid black;
+    width: 100%;
+}
+
+
+.formularioclass  input{
+    background-color: none;
+    outline: none;
+    border: none;
+    padding: 10px 5px;
+    font-size: 18px;
+    
+}
+.olvido{
+    
+    text-align: center;
+    margin: 3px;
+}
+
+.botoncentrar{
+    display: flex;
+    justify-content: center;
+}
+
+
+input[type="submit"]{
+    width: 50%;
+    border-radius: 10px;
+    background-color: rgb(100, 100, 255);
+    margin: 20px 0px;
+    font-size: 20px;
+    color:white;
+}
+input[type="submit"]:hover{
+
+    width: 50%;
+    border-radius: 10px;
+    background-color:white;
+    margin: 20px 0px;
+    font-size: 20px;
+    color:black;
+    outline: 2px solid rgb(100, 100, 255);
+    cursor: pointer;
+}
+
+
+.confirmar{
+    display: flex;
+    justify-content:space-between;
+    
+}
+
+.confirmar .inputt{
+    margin: 10px 30px 10px 0px;
+}

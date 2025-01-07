@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section id="gallery">
+        <div class="gallery-container">
+            <figure class="gallery-item">
+                <img src="image1.jpg" alt="Imagen 1">
+                <figcaption>Descripción de la imagen 1</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="image2.jpg" alt="Imagen 2">
+                <figcaption>Descripción de la imagen 2</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="image3.jpg" alt="Imagen 3">
+                <figcaption>Descripción de la imagen 3</figcaption>
+            </figure>
+            <!-- ... otras imágenes ... -->
+        </div>
+        <nav class="gallery-navigation">
+            <button class="nav-button prev-button">Anterior</button>
+            <button class="nav-button next-button">Siguiente</button>
+        </nav>
+    </section>
+</body>
+</html>
+
+<style>
+    /* Estilo básico para el Slider*/
+#gallery {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+ }
+ 
+ .gallery-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+ }
+ 
+ .gallery-item {
+    min-width: 100%;
+    box-sizing: border-box;
+ }
+ 
+ .gallery-item img {
+    width: 100%;
+    display: block;
+ }
+ 
+ /* Navegación del Slider */
+ .gallery-navigation {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: -50px;
+ }
+ 
+ .nav-button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+ }
+ 
+ .nav-button:hover {
+ background-color: #005f5f;
+ }
+</style>
+
+
+<script>
+    let currentIndex = 0;
+
+document.querySelector('.prev-button').addEventListener('click', () => {
+   navigate(-1);
+});
+
+document.querySelector('.next-button').addEventListener('click', () => {
+   navigate(1);
+});
+
+function navigate(direction) {
+   const galleryContainer = document.querySelector('.gallery-container');
+   const totalImages = document.querySelectorAll('.gallery-item').length;
+
+   currentIndex = (currentIndex + direction + totalImages) % totalImages;
+   const offset = -currentIndex * 100;
+
+   galleryContainer.style.transform = `translateX(${offset}%)`;
+}
+</script>
+En este código:
+
+Inicializamos una variable currentIndex para mantener un registro de la imagen actual que se está mostrando en el slider.
+Agregamos event listeners a los botones de navegación. Cuando se hace clic en estos botones, llamamos a la función navigate con una dirección de -1 (anterior) o 1 (siguiente), respectivamente.
+Dentro de la función navigate, actualizamos currentIndex basado en la dirección proporcionada, y calculamos el desplazamiento necesario (offset) para mostrar la imagen deseada.
+Finalmente, usamos transform: translateX() en el contenedor del slider para desplazarse a la posición correcta, mostrando la imagen correspondiente.
+Con estas líneas de JavaScript, hemos añadido una funcionalidad básica de navegación a nuestro slider, permitiendo a los usuarios explorar las imágenes de manera interactiva. Este es un primer paso hacia un slider dinámico y atractivo que puede ser ampliamente personalizado con más código y estilos.
+
+Implementando una Función de Autoplay al Slider dinámico
+Agregar una función de autoplay a nuestro slider permite a las imágenes cambiar automáticamente cada cierto tiempo, proporcionando una experiencia de usuario dinámica sin necesidad de interactuar con los botones de navegación. A continuación, implementaremos esta funcionalidad utilizando JavaScript.
+
+<script>
+let autoplayInterval = null;
+
+function startAutoplay(interval) {
+   stopAutoplay(); // Detiene cualquier autoplay anterior para evitar múltiples intervalos.
+   autoplayInterval = setInterval(() => {
+      navigate(1); // Navega a la siguiente imagen cada intervalo de tiempo.
+   }, interval);
+}
+
+function stopAutoplay() {
+   clearInterval(autoplayInterval);
+}
+
+// Iniciar autoplay con un intervalo de 3 segundos.
+startAutoplay(3000);
+
+// Opcional: Detener autoplay cuando el usuario interactúa con los botones de navegación.
+document.querySelectorAll('.nav-button').forEach(button => {
+    button.addEventListener('click', stopAutoplay);
+});    
+</script>
