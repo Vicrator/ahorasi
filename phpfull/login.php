@@ -17,8 +17,8 @@ if (!empty($_POST["btnsesion"])) {
             //echo '<div class="alert alert-danger text-center">Muy bien</div>'; 
             $comparacion = $Resultados->fetch_assoc();
             if ($comparacion['tipousuario'] == "1") {
-                //session_start();
-                //$_SESSION["Usuario"]=$comparacion['Usuario'];
+                session_start();
+                $_SESSION["Usuario"]=$comparacion['Usuario'];
                 //echo '<div class="alert alert-danger text-center">Entro</div>'; 
                 /*Tipo de vista usuario tipo cliente
                 echo '<div class="alert alert-danger text-center">Tipo de usuario cliente</div>'; */
@@ -39,7 +39,7 @@ if (!empty($_POST["btnsesion"])) {
                 echo '<div class="alert alert-danger text-center">Tipo de usuario gimnasio</div>'; */
             }
         } else {
-            //echo '<div class="alert alert-danger text-center">Usuario no existe</div>'; 
+            echo '<div class="alert alert-danger text-center">Usuario no existe</div>'; 
         }
     }
 }
