@@ -6,8 +6,8 @@ if (!empty($_POST["btnsesion"])) {
         
     }
     else{
-        $usuario=$_GET["usuario"];
-        $password=$_GET["password"];
+        $usuario=$_POST["usuario"];
+        $password=$_POST["password"];
         $sql =$conexion -> prepare("SELECT * FROM usuarios WHERE Usuario = ? and contrasena = ? ");
         $sql->bind_param("ss",$usuario,$password );
         $sql->execute();
