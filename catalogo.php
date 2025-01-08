@@ -1,6 +1,5 @@
 <?php
 session_start();
-include("conexion.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -100,6 +99,17 @@ include("conexion.php");
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <?php
+            require './phpfull/conexion.php';
+
+
+            $con = $conexion;
+            
+            $sql = $con->prepare("SELECT * FROM membresias where Activo=1");
+            $sql->execute();
+            $resultado = $sql->get_result();
+            
+
+
             foreach ($resultado as $row) {
                 $nombre = $row["Nombre_membresia"];
                 $precio = $row["precio"];
