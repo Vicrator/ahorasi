@@ -38,7 +38,7 @@
 
         <div class="menu">
             <ul class="menus">
-                <li><a href="index.php">Inicioooo</a></li>
+                <li><a href="index.php">Inicio</a></li>
                 <li><a href="gimnasios.php">Gimnasio</a></li>
                 <li><a href="catalogo.php">Membresias</a></li>
                 <?php
