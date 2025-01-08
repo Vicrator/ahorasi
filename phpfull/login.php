@@ -1,6 +1,5 @@
 <?php
 include("conexion.php");
-
 if (!empty($_POST["btnsesion"])) {
     if (empty($_POST["usuario"]) || empty($_POST["password"])) {        
         echo '<div class="alert alert-danger text-center" >User o password vacios</div>'; 
@@ -19,9 +18,10 @@ if (!empty($_POST["btnsesion"])) {
             //echo '<div class="alert alert-danger text-center">Muy bien</div>'; 
             $comparacion= $Resultados->fetch_assoc();
             if($comparacion['tipousuario'] == "1"){
+                session_start();
                 $_SESSION["Usuario"]=$comparacion['Usuario'];
                 //echo '<div class="alert alert-danger text-center">Entro</div>'; 
-                header("location:/index.php");
+                header("location:https://gymfitpass-f5c7hrcyd7dkcxh2.canadacentral-01.azurewebsites.net");
                 exit;
                 /*Tipo de vista usuario tipo cliente
                 echo '<div class="alert alert-danger text-center">Tipo de usuario cliente</div>'; */ 
