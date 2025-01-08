@@ -17,7 +17,7 @@ if (!empty($_POST["btnsesion"])) {
             /*Mientras creo la parte del usuario*/
             echo '<div class="alert alert-danger text-center">Muy bien</div>'; 
             $comparacion= $Resultados->fetch_assoc();
-            if($comparacion['tipousuario'] == "1"){
+            if($comparacion['tipousuario'] == "normal"){
                 session_start();
                 $_SESSION["Usuario"]=$comparacion['Usuario'];
                 header("location:index.php");
