@@ -1,15 +1,3 @@
-<?php
-require './phpfull/conexion.php';
-
-
-$con = $conexion;
-
-$sql = $con->prepare("SELECT * FROM gimnasio ");
-$sql->execute();
-$resultado = $sql->get_result();
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -106,6 +94,19 @@ $resultado = $sql->get_result();
 
     <div class="container">
 
+        <?php
+        //require './phpfull/conexion.php';
+        include("phpfull/conexion.php");
+
+
+        $con = $conexion;
+
+        $sql = $con->prepare("SELECT * FROM gimnasio ");
+        $sql->execute();
+        $resultado = $sql->get_result();
+
+
+        ?>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <?php
             foreach ($resultado as $row) {
