@@ -32,6 +32,12 @@ if ($conexion->connect_error) {
 
 
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
 $host = 'basegym.mysql.database.azure.com';
 $username = 'victorestudiante';
 $password = 'soyelestudiante23.';
