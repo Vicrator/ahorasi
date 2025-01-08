@@ -17,7 +17,7 @@ if (!empty($_POST["btnsesion"])) {
             /*Mientras creo la parte del usuario*/
             echo '<div class="alert alert-danger text-center">Muy bien</div>'; 
             $comparacion= $Resultados->fetch_assoc();
-            if($comparacion['tipousuario'] == "normal"){
+            if($comparacion['tipousuario'] == 0){
                 session_start();
                 $_SESSION["Usuario"]=$comparacion['Usuario'];
                 header("location:https://gymfitpass-f5c7hrcyd7dkcxh2.canadacentral-01.azurewebsites.net/index.php");
