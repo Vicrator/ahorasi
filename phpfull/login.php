@@ -21,10 +21,11 @@ if (!empty($_POST["btnsesion"])) {
                 //session_start();
                 //$_SESSION["Usuario"]=$comparacion['Usuario'];
                 //echo '<div class="alert alert-danger text-center">Entro</div>'; 
-                header("location:https://gymfitpass-f5c7hrcyd7dkcxh2.canadacentral-01.azurewebsites.net");
-                exit;
+
                 /*Tipo de vista usuario tipo cliente
                 echo '<div class="alert alert-danger text-center">Tipo de usuario cliente</div>'; */ 
+                header("location:https://gymfitpass-f5c7hrcyd7dkcxh2.canadacentral-01.azurewebsites.net");
+                exit;
             }
             else{
                 /*Tipo de vista usuario tipo gimnasio
