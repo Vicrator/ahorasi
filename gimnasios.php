@@ -1,3 +1,15 @@
+<?php
+require './phpfull/conexion.php';
+
+
+$con = $conexion;
+
+$sql = $con->prepare("SELECT * FROM gimnasio ");
+$sql->execute();
+$resultado = $sql->get_result();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,18 +36,6 @@
 </head>
 
 <body>
-    <?php
-    require './phpfull/conexion.php';
-
-
-    $con = $conexion;
-
-    $sql = $con->prepare("SELECT * FROM gimnasio ");
-    $sql->execute();
-    $resultado = $sql->get_result();
-
-
-    ?>
 
     <header>
         <div class="logo">
