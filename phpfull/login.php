@@ -20,7 +20,7 @@ if (!empty($_POST["btnsesion"])) {
             if($comparacion['tipousuario'] == "normal"){
                 session_start();
                 $_SESSION["Usuario"]=$comparacion['Usuario'];
-                header("location:index.php");
+                header("location:https://gymfitpass-f5c7hrcyd7dkcxh2.canadacentral-01.azurewebsites.net/index.php");
                 exit;
                 /*Tipo de vista usuario tipo cliente
                 echo '<div class="alert alert-danger text-center">Tipo de usuario cliente</div>'; */ 
