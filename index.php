@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,7 +45,7 @@
                 <li><a href="gimnasios.php">Gimnasio</a></li>
                 <li><a href="catalogo.php">Membresias</a></li>
                 <?php
-                session_start();
+                
 
                 $si = false;
                 if (isset($_GET["validado"])) {
