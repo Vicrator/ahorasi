@@ -27,7 +27,7 @@ if (!empty($_POST["btnsesion"])) {
 
 
                 // URL de redirección
-                $url = "https://www.youtube.com/watch?v=vdp-kyvP_kw&ab_channel=AQUISI";
+                $url = "https://gymfitpass-f5c7hrcyd7dkcxh2.canadacentral-01.azurewebsites.net/";
 
                 // Realiza la redirección
                 header("Location: $url");
