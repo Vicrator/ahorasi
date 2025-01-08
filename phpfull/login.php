@@ -15,13 +15,13 @@ if (!empty($_POST["btnsesion"])) {
         $Resultados=$sql->get_result();
         if ($Resultados->num_rows > 0) {
             /*Mientras creo la parte del usuario*/
-            echo '<div class="alert alert-danger text-center">Muy bien</div>'; 
+            //echo '<div class="alert alert-danger text-center">Muy bien</div>'; 
             $comparacion= $Resultados->fetch_assoc();
             if($comparacion['tipousuario'] == "1"){
                 session_start();
                 $_SESSION["Usuario"]=$comparacion['Usuario'];
-                echo '<div class="alert alert-danger text-center">Entro</div>'; 
-                header("location:index.php");
+                //echo '<div class="alert alert-danger text-center">Entro</div>'; 
+                header("location:./index.php");
                 exit;
                 /*Tipo de vista usuario tipo cliente
                 echo '<div class="alert alert-danger text-center">Tipo de usuario cliente</div>'; */ 
