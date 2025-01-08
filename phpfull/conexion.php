@@ -49,7 +49,7 @@ $ssl_cert = '/ruta/a/client-cert.pem';
 $ssl_key = '/ruta/a/client-key.pem';
 
 // Establecer la conexión con SSL
-$conexion = new mysqli($host, $username, $password, $dbname, 3306, null, MYSQLI_CLIENT_SSL);
+$conexion = new mysqli($host, $username, $password, $dbname, 3306);
 
 // Verificar la conexión
 if ($conexion->connect_error) {
