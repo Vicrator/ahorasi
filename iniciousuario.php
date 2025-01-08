@@ -17,7 +17,7 @@
         //include("");
         ?>
 
-        <form action="phpfull/login.php" method="GET">
+        <form action="phpfull/intento.php" method="GET">
             <div class="usuario inputt">
                 <input type="text" placeholder="Usuario" name="usuario">
 
