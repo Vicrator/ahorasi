@@ -1,4 +1,3 @@
-
 <?php
 /*Puedo ocupar php.init para evitar que los errores se vean en produccion*/ 
 ini_set('display_errors', 'On');
