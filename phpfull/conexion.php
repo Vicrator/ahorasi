@@ -43,11 +43,6 @@ $username = 'victorestudiante';
 $password = 'soyelestudiante23.';
 $dbname = 'gymfitpass23_past';
 
-// Ruta de los certificados
-$ssl_ca = '/ruta/a/ca-cert.pem';
-$ssl_cert = '/ruta/a/client-cert.pem';
-$ssl_key = '/ruta/a/client-key.pem';
-
 // Establecer la conexión con SSL
 $conexion = new mysqli($host, $username, $password, $dbname, 3306);
 
