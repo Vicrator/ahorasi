@@ -1,4 +1,5 @@
 <?php
+include("conexion.php");
 // URL de redirección
 $url = "https://www.youtube.com/watch?v=vdp-kyvP_kw&ab_channel=AQUISI";
 
