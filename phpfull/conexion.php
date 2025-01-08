@@ -1,6 +1,6 @@
 
 <?php
-
+/*
 // Habilitar la visualización de errores temporalmente
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -26,5 +26,28 @@ if ($conexion->connect_error) {
             <p>Se estableció correctamente la conexión a la base de datos.</p>
         </div>
     ";
+}*/
+?>
+
+
+
+<?php
+$host = 'basegym.mysql.database.azure.com';
+$username = 'victorestudiante';
+$password = 'soyelestudiante23.';
+$dbname = 'gymfitpass23_past';
+
+// Ruta de los certificados
+$ssl_ca = '/ruta/a/ca-cert.pem';
+$ssl_cert = '/ruta/a/client-cert.pem';
+$ssl_key = '/ruta/a/client-key.pem';
+
+// Establecer la conexión con SSL
+$conexion = new mysqli($host, $username, $password, $dbname, 3306, null, MYSQLI_CLIENT_SSL);
+
+// Verificar la conexión
+if ($conexion->connect_error) {
+    die('Error de conexión: ' . $conexion->connect_error);
 }
+echo 'Conexión segura establecida con éxito.';
 ?>
