@@ -30,7 +30,7 @@ if (!empty($_POST["btnsesion"])) {
                 $url = "https://gymfitpass-f5c7hrcyd7dkcxh2.canadacentral-01.azurewebsites.net/";
 
                 // Realiza la redirección
-                header("Location:index.php");
+                header("Location:./index.php");
 
                 // Asegúrate de detener la ejecución del script después de la redirección
                 exit();
