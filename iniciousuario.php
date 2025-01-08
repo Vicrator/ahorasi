@@ -14,10 +14,10 @@
     <div class="formularioclass">
         <h1>Iniciar sesion </h1>
         <?php
-        include("phpfull/login.php");
+        //include("");
         ?>
 
-        <form action="" method="post">
+        <form action="phpfull/login.php" method="post">
             <div class="usuario inputt">
                 <input type="text" placeholder="Usuario" name="usuario">
 
