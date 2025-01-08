@@ -7,7 +7,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
-$conexion= new mysqli("basegym.mysql.database.azure.com","victorestudiante","soyelestudiante23.",'gymfitpass23_past');
+$conexion= new mysqli("basegym.mysql.database.azure.com","victorestudiante","soyelestudiante23.","gymfitpass23_past", null, MYSQLI_CLIENT_SSL);
 $conexion->set_charset("utf8");
 
 if ($conexion->connect_error) {
