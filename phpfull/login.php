@@ -2,7 +2,7 @@
 include("conexion.php");
 if (!empty($_POST["btnsesion"])) {
     if (empty($_POST["usuario"]) || empty($_POST["password"])) {        
-        echo '<div class="alert alert-danger text-center" >User o password vacios</div>'; 
+        //echo '<div class="alert alert-danger text-center" >User o password vacios</div>'; 
         
     }
     else{
@@ -33,7 +33,7 @@ if (!empty($_POST["btnsesion"])) {
     
 
         }else{
-            echo '<div class="alert alert-danger text-center">Usuario no existe</div>'; 
+            //echo '<div class="alert alert-danger text-center">Usuario no existe</div>'; 
         }
 
 
