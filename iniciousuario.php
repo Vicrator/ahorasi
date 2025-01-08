@@ -14,7 +14,7 @@
     <div class="formularioclass">
         <h1>Iniciar sesion </h1>
         <?php
-        include("phpfull/login.php");
+        include("phpfull/intento.php");
         ?>
 
         <form action="" method="post">
