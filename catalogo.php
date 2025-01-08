@@ -1,14 +1,6 @@
 <?php
-require './phpfull/conexion.php';
-
-
-$con = $conexion;
-
-$sql = $con->prepare("SELECT * FROM membresias where Activo=1");
-$sql->execute();
-$resultado = $sql->get_result();
-
-
+session_start();
+include("conexion.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +20,6 @@ $resultado = $sql->get_result();
 
     <link rel="stylesheet" href="css/styleinicio.css">
     <link rel="stylesheet" href="css/boostrapcopy.css">
-    <link rel="stylesheet" href="css/stylecatalogo.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GymPass</title>
@@ -55,7 +46,7 @@ $resultado = $sql->get_result();
                 <li><a href="gimnasios.php">Gimnasio</a></li>
                 <li><a href="catalogo.php">Membresias</a></li>
                 <?php
-                session_start();
+                
 
                 $si = false;
                 if (isset($_GET["validado"])) {
@@ -102,6 +93,7 @@ $resultado = $sql->get_result();
         }
         ?>
     </header>
+
 
 
 

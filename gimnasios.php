@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +19,6 @@
 
     <link rel="stylesheet" href="css/styleinicio.css">
     <link rel="stylesheet" href="css/boostrapcopy.css">
-    <link rel="stylesheet" href="css/stylecatalogo.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GymPass</title>
@@ -24,6 +26,7 @@
 </head>
 
 <body>
+
 
     <header>
         <div class="logo">
@@ -42,7 +45,7 @@
                 <li><a href="gimnasios.php">Gimnasio</a></li>
                 <li><a href="catalogo.php">Membresias</a></li>
                 <?php
-                session_start();
+
 
                 $si = false;
                 if (isset($_GET["validado"])) {
