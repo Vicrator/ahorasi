@@ -46,7 +46,6 @@ session_start();
                 <li><a href="catalogo.php">Membresias</a></li>
                 <?php
                 if (isset($_SESSION["gimnasio"])) {
-                    var_dump($_SESSION);
                 ?>
                     <li><a href="catalogo.php">Reportes</a></li>
                     
@@ -71,6 +70,7 @@ session_start();
                         </ul>
                     </div>
                 <?php
+                                    var_dump($_SESSION);
                 } if (isset($_SESSION["gimnasio"])) {
                 ?>
                     <div class="sesion ">
