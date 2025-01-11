@@ -27,6 +27,7 @@
 
 <body>
 
+
     <header>
         <div class="logo">
             <a href="index.php"><img src="img/logo2-removebg-preview.png" alt=""></a>
@@ -44,7 +45,14 @@
                 <li><a href="gimnasios.php">Gimnasio</a></li>
                 <li><a href="catalogo.php">Membresias</a></li>
                 <?php
-                session_start();
+                if (isset($_SESSION["gimnasio"])) {
+                ?>
+                    <li><a href="catalogo.php">Reportes</a></li>
+                <?php
+                }
+                ?>
+                <?php
+
 
                 $si = false;
                 if (isset($_GET["validado"])) {
@@ -52,7 +60,7 @@
                     session_destroy();
                     $si = true;
                 }
-                if (isset($_SESSION["Usuario"])) {
+                if (isset($_SESSION["Usuario"]) || isset($_SESSION["gimnasio"])) {
                 ?>
                     <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>

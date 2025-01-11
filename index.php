@@ -60,7 +60,7 @@ session_start();
                     session_destroy();
                     $si = true;
                 }
-                if (isset($_SESSION["Usuario"])) {
+                if (isset($_SESSION["Usuario"]) || isset($_SESSION["gimnasio"])) {
                 ?>
                     <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
