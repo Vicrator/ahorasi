@@ -70,11 +70,16 @@ session_start();
                     </div>
                 <?php
                 } elseif (isset($_SESSION["gimnasio"])) {
+                    // Menú para usuarios tipo gimnasio
                 ?>
-                    <div class="sesion ">
-                        <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
+                    <li><a href="reportes.php">Reportes</a></li>
+                    <li><a href="gestionar.php">Gestionar Membresías</a></li>
+                    <div class="sesion">
+                        <p class="btn btn-success">
+                            <i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?>
+                        </p>
                         <ul class="Menu_vertical">
-                            <li><a href="index.php?validado=true">Cerrar sesion</a></li>
+                            <li><a href="index.php?validado=true">Cerrar sesión</a></li>
                         </ul>
                     </div>
                 <?php

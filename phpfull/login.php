@@ -30,7 +30,7 @@ if (!empty($_POST["btnsesion"])) {
 
                 // Asegúrate de detener la ejecución del script después de la redirección
                 exit();
-            } else {
+            } elseif($comparacion['tipousuario'] == "2") {
                 $_SESSION["gimnasio"]=$comparacion['Usuario'];
                 header("Location:/index.php");
                 exit();
