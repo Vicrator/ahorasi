@@ -19,8 +19,17 @@ if (!empty($_POST["btnregistrarse"])) {
                 $sqlbuscar->bind_param("s", $usuariof);
                 $sqlbuscar->execute();
                 $resultados = $sqlbuscar->get_result();
-                if ($resultados->num_rows > 0) {
-                    echo '<div class="alert alert-danger text-center">Nombre de usuario ocupado</div>';
+            }
+            if ($resultados->num_rows > 0) {
+                echo '<div class="alert alert-danger text-center">Nombre de usuario ocupado</div>';
+            } else {
+                $sqlcorreoduplicado = $conexion->prepare("SELECT * FROM usuarios WHERE correo=?");
+                $sqlcorreoduplicado->bind_param("s", $correof);
+                $sqlcorreoduplicado->execute();
+                $result = $sqlcorreoduplicado->get_result();
+
+                if ($result->num_rows > 0) {
+                    echo '<div class="alert alert-danger text-center">Correo ya registrado anteriormente</div>';
                 } else {
                     $sql = $conexion->prepare("INSERT INTO usuarios (Usuario,contrasena,telefono,correo,tipousuario) VALUES (?,?,?,?,?)");
                     $sql->bind_param("ssisi", $usuariof, $passwordf, $telefono, $correof, $tipousuario);
@@ -30,14 +39,14 @@ if (!empty($_POST["btnregistrarse"])) {
                         echo '<div class="alert alert-danger text-center">Error en el registro</div>';
                     }
                 }
-            } else {
-                echo '<div class="alert alert-danger text-center">correo no coinciden</div>';
             }
         } else {
-            echo '<div class="alert alert-danger text-center">Contraseñas no coinciden</div>';
+            echo '<div class="alert alert-danger text-center">correo no coinciden</div>';
         }
     } else {
-        echo '<div class="alert alert-danger text-center">Rellenar todos los datos</div>';
+        echo '<div class="alert alert-danger text-center">Contraseñas no coinciden</div>';
     }
+} else {
+    echo '<div class="alert alert-danger text-center">Rellenar todos los datos</div>';
 }
 ?>
