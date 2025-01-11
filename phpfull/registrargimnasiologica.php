@@ -27,18 +27,28 @@ if (!empty($_POST["btnregistrarse"])) {
                 if ($resultados->num_rows > 0) {
                     echo '<div class="alert alert-danger text-center">Nombre de usuario ocupado</div>';
                 } else {
-                    $sql = $conexion->prepare("INSERT INTO usuarios (Usuario,contrasena,telefono,correo,tipousuario) VALUES (?,?,?,?,?)");
-                    $sql->bind_param("ssisi", $usuariof, $passwordf, $telefono, $correof, $tipousuario);
-                    if ($sql->execute()) {
-                        $sql2 = $conexion->prepare("INSERT INTO gimnasio (Usuario,nombre_cadena,nombre_sucursal,ubicacion) VALUES (?,?,?,?)");
-                        $sql2->bind_param("ssss", $usuariof, $cadena, $sucursal, $ubicacion);
-                        if ($sql2->execute()) {
-                            echo '<div class="alert alert-danger text-center">Gimnasio registrado correctamente</div>';
-                        } else {
-                            echo '<div class="alert alert-danger text-center">Error al gimnasio registrado correctamente</div>';
-                        }
+                    $sqlcorreoduplicado = $conexion->prepare("SELECT * FROM usuarios WHERE correo=?");
+                    $sqlcorreoduplicado->bind_param("s", $correof);
+                    $sqlcorreoduplicado->execute();
+                    $result = $sqlcorreoduplicado->get_result();
+
+                    if ($result->num_rows > 0) {
+                        echo '<div class="alert alert-danger text-center">Correo ya registrado anteriormente</div>';
                     } else {
-                        echo '<div class="alert alert-danger text-center">Error en el registro</div>';
+
+                        $sql = $conexion->prepare("INSERT INTO usuarios (Usuario,contrasena,telefono,correo,tipousuario) VALUES (?,?,?,?,?)");
+                        $sql->bind_param("ssisi", $usuariof, $passwordf, $telefono, $correof, $tipousuario);
+                        if ($sql->execute()) {
+                            $sql2 = $conexion->prepare("INSERT INTO gimnasio (Usuario,nombre_cadena,nombre_sucursal,ubicacion) VALUES (?,?,?,?)");
+                            $sql2->bind_param("ssss", $usuariof, $cadena, $sucursal, $ubicacion);
+                            if ($sql2->execute()) {
+                                echo '<div class="alert alert-danger text-center">Gimnasio registrado correctamente</div>';
+                            } else {
+                                echo '<div class="alert alert-danger text-center">Error al gimnasio registrado correctamente</div>';
+                            }
+                        } else {
+                            echo '<div class="alert alert-danger text-center">Error en el registro</div>';
+                        }
                     }
                 }
             } else {
