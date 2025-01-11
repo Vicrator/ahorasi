@@ -70,7 +70,6 @@ session_start();
                         </ul>
                     </div>
                 <?php
-                                    var_dump($_SESSION);
                 } if (isset($_SESSION["gimnasio"])) {
                 ?>
                     <div class="sesion ">
@@ -81,9 +80,11 @@ session_start();
                     </div>
                 <?php
                 } else {
+                    var_dump($_SESSION);
                 ?>
                     <div class="sesion sesionmenu" style="margin: 0px;">
                         <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
+                        
                     </div>
                 <?php
                 }
