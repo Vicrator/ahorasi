@@ -46,8 +46,10 @@ session_start();
                 <li><a href="catalogo.php">Membresias</a></li>
                 <?php
                 if (isset($_SESSION["gimnasio"])) {
+                    var_dump($_SESSION);
                 ?>
                     <li><a href="catalogo.php">Reportes</a></li>
+                    
                 <?php
                 }
                 ?>
@@ -62,7 +64,6 @@ session_start();
                 }
                 if (isset($_SESSION["Usuario"])) {
                 ?>
-                    <h1>holaaaa</h1>
                     <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
                         <ul class="Menu_vertical">
