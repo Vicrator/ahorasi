@@ -56,7 +56,9 @@ session_start();
 
 
                 $si = false;
+                var_dump($_SESSION);
                 if (isset($_GET["validado"])) {
+                    var_dump($_SESSION);
                     $_SESSION = [];
                     session_destroy();
                     $si = true;
@@ -80,7 +82,6 @@ session_start();
                     </div>
                 <?php
                 } else {
-                    var_dump($_SESSION);
                 ?>
                     <div class="sesion sesionmenu" style="margin: 0px;">
                         <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
