@@ -45,7 +45,14 @@ session_start();
                 <li><a href="gimnasios.php">Gimnasio</a></li>
                 <li><a href="catalogo.php">Membresias</a></li>
                 <?php
-                
+                if (isset($_SESSION["gimnasio"])) {
+                ?>
+                <li><a href="catalogo.php">Reportes</a></li>
+                <?php
+                }
+                ?>
+                <?php
+
 
                 $si = false;
                 if (isset($_GET["validado"])) {

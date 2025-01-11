@@ -28,7 +28,7 @@ session_start();
 <body>
 
 
-    <header>
+<header>
         <div class="logo">
             <a href="index.php"><img src="img/logo2-removebg-preview.png" alt=""></a>
         </div>
@@ -44,6 +44,13 @@ session_start();
                 <li><a href="index.php">Inicio</a></li>
                 <li><a href="gimnasios.php">Gimnasio</a></li>
                 <li><a href="catalogo.php">Membresias</a></li>
+                <?php
+                if (isset($_SESSION["gimnasio"])) {
+                ?>
+                <li><a href="catalogo.php">Reportes</a></li>
+                <?php
+                }
+                ?>
                 <?php
 
 
@@ -92,6 +99,7 @@ session_start();
         }
         ?>
     </header>
+
 
 
 

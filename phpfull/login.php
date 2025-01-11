@@ -35,6 +35,9 @@ if (!empty($_POST["btnsesion"])) {
                 // Asegúrate de detener la ejecución del script después de la redirección
                 exit();
             } else {
+                session_start();
+                $_SESSION["gimnasio"]=$comparacion['Usuario'];
+                header("Location:/index.php");
                 /*Tipo de vista usuario tipo gimnasio
                 echo '<div class="alert alert-danger text-center">Tipo de usuario gimnasio</div>'; */
             }

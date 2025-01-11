@@ -28,7 +28,7 @@ session_start();
 <body>
 
 
-    <header>
+<header>
         <div class="logo">
             <a href="index.php"><img src="img/logo2-removebg-preview.png" alt=""></a>
         </div>
@@ -45,7 +45,14 @@ session_start();
                 <li><a href="gimnasios.php">Gimnasio</a></li>
                 <li><a href="catalogo.php">Membresias</a></li>
                 <?php
-                
+                if (isset($_SESSION["gimnasio"])) {
+                ?>
+                <li><a href="catalogo.php">Reportes</a></li>
+                <?php
+                }
+                ?>
+                <?php
+
 
                 $si = false;
                 if (isset($_GET["validado"])) {
@@ -96,6 +103,7 @@ session_start();
 
 
 
+
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <?php
@@ -103,11 +111,11 @@ session_start();
 
 
             $con = $conexion;
-            
+
             $sql = $con->prepare("SELECT * FROM membresias where Activo=1");
             $sql->execute();
             $resultado = $sql->get_result();
-            
+
 
 
             foreach ($resultado as $row) {
@@ -123,12 +131,28 @@ session_start();
                             <h3 class="card-title"><?php echo $nombre ?></h3>
                             <p class="card-text"><?php echo $descripcion ?></p>
                             <p class="card-text">$<?php echo number_format($precio, 2, '.', ',') ?></p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <a href="" class="btn btn-primary">Detalles</a>
+                            <?php
+                            if (!isset($_SESSION["gimnasio"])) {
+                            ?>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="" class="btn btn-primary">Detalles</a>
+                                    </div>
+                                    <a href="" class="btn btn-success">Comprar</a>
                                 </div>
-                                <a href="" class="btn btn-success">Comprar</a>
-                            </div>
+                            <?php
+                            } else {
+                            ?>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="" class="btn btn-primary">Modificar</a>
+                                    </div>
+                                    <a href="" class="btn btn-success">Eliminar</a>
+                                </div>
+                            <?php
+                            }
+                            ?>
+
                         </div>
                     </div>
                 </div>
