@@ -71,7 +71,7 @@ session_start();
                         </ul>
                     </div>
                 <?php
-                } elseif (isset($_SESSION["gimnasio"])) {
+                } if (isset($_SESSION["gimnasio"])) {
                 ?>
                     <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
