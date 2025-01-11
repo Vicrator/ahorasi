@@ -47,7 +47,7 @@ session_start();
                 <?php
                 if (isset($_SESSION["gimnasio"])) {
                 ?>
-                <li><a href="catalogo.php">Reportes</a></li>
+                    <li><a href="catalogo.php">Reportes</a></li>
                 <?php
                 }
                 ?>
@@ -60,10 +60,19 @@ session_start();
                     session_destroy();
                     $si = true;
                 }
-                if (isset($_SESSION["Usuario"]) || isset($_SESSION["gimnasio"])) {
+                if (isset($_SESSION["Usuario"])) {
                 ?>
                     <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
+                        <ul class="Menu_vertical">
+                            <li><a href="index.php?validado=true">Cerrar sesion</a></li>
+                        </ul>
+                    </div>
+                <?php
+                } elseif (isset($_SESSION["gimnasio"])) {
+                ?>
+                    <div class="sesion ">
+                        <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
                         <ul class="Menu_vertical">
                             <li><a href="index.php?validado=true">Cerrar sesion</a></li>
                         </ul>
