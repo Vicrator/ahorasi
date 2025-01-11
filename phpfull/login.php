@@ -24,20 +24,15 @@ if (!empty($_POST["btnsesion"])) {
                 echo '<div class="alert alert-danger text-center">Tipo de usuario cliente</div>'; */
                 //header("location:https://gymfitpass-f5c7hrcyd7dkcxh2.canadacentral-01.azurewebsites.net");
                 //exit;
-
-
-                // URL de redirección
-                $url = "https://gymfitpass-f5c7hrcyd7dkcxh2.canadacentral-01.azurewebsites.net/";
-
                 // Realiza la redirección
                 header("Location:/index.php");
 
                 // Asegúrate de detener la ejecución del script después de la redirección
                 exit();
             } else {
-                session_start();
                 $_SESSION["gimnasio"]=$comparacion['Usuario'];
                 header("Location:/index.php");
+                exit();
                 /*Tipo de vista usuario tipo gimnasio
                 echo '<div class="alert alert-danger text-center">Tipo de usuario gimnasio</div>'; */
             }
