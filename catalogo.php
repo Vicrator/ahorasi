@@ -170,6 +170,7 @@ session_start();
 
             <?php
             if (isset($_SESSION["gimnasio"])) {
+                $idgym = $_SESSION["Usgimnasio"]["id"];
             ?>
                 <div class="card shadow-sm">
                     <a href="membresiadetalles.php?idgim=<?= $idgym ?>" class="btn btn-primary">SUBIR NUEVA MEMBRESIA</a>
