@@ -13,11 +13,12 @@ if (!empty($_POST["btnsesion"])) {
 
         $Resultados = $sql->get_result();
         if ($Resultados->num_rows > 0) {
-            session_start();
+            
             /*Mientras creo la parte del usuario*/
             //echo '<div class="alert alert-danger text-center">Muy bien</div>'; 
             $comparacion = $Resultados->fetch_assoc();
             if ($comparacion['tipousuario'] == "1") {                
+                session_start();
                 $_SESSION["Usuario"]=$comparacion['Usuario'];
                 //echo '<div class="alert alert-danger text-center">Entro</div>'; 
                 /*Tipo de vista usuario tipo cliente
@@ -29,6 +30,7 @@ if (!empty($_POST["btnsesion"])) {
                 // Asegúrate de detener la ejecución del script después de la redirección
                 exit();
             } elseif($comparacion['tipousuario'] == "2") {
+                session_start();
                 $_SESSION["gimnasio"]=$comparacion['Usuario'];
                 header("Location:/index.php");
                 exit();
