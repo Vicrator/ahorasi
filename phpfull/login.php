@@ -1,10 +1,10 @@
 <?php
 include("conexion.php");
-
+session_start();
 if (!empty($_POST["btnsesion"])) {
     if (empty($_POST["usuario"]) || empty($_POST["password"])) {
         //echo '<div class="alert alert-danger text-center" >User o password vacios</div>'; 
-        session_start();
+        
     } else {
         $usuario = $_POST["usuario"];
         $password = $_POST["password"];
