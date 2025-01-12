@@ -14,8 +14,8 @@
     <div class="formularioclass">
         <h1>Iniciar sesion </h1>
         <?php
-        if(!isset($_GET("mensaje"))){
-            echo $_GET("mensaje");
+        if(!isset($_GET["mensaje"])){
+            echo $_GET["mensaje"];
         }
         ?>
         <form action="phpfull/login.php" method="post">
