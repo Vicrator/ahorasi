@@ -1,27 +1,3 @@
-<?php
-include("phpfull/conexion.php");
-
-// Validar si se obtuvo el id_gimnasio de $_GET
-if (isset($_SESSION["Usgimnasio"]["id"])) {
-    die("No se proporcionó el id_gimnasio en la URL.");
-} else {
-    $id_gimnasio = $_SESSION["Usgimnasio"]["id"];
-
-    // Verificar si se envió el formulario
-
-    $nombre_membresia =$_POST['nombre_membresia'];
-    $precio =$_POST['precio'];
-    $descripcion = $_POST['descripcion'];
-    $activo =$_POST['activo'];
-
-    // Insertar en la base de datos
-    $sql = "INSERT INTO membresias (id_gimnasio, Nombre_membresia, precio, descripcion, Activo) VALUES ('$id_gimnasio', '$nombre_membresia', '$precio', '$descripcion', '$activo')";
-
-}
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -200,7 +176,12 @@ if (isset($_SESSION["Usgimnasio"]["id"])) {
 
     <div class="container">
         <h1>Registrar Membresía</h1>
-        <form method="POST" action="">
+        <?php
+        if (isset($_GET["mensaje"])) {
+            echo $_GET["mensaje"];
+        }
+        ?>
+        <form method="POST" action="phpfull/registrarmembresia.php">
             <label for="nombre_membresia">Nombre de la Membresía:</label>
             <input type="text" id="nombre_membresia" name="nombre_membresia" required>
 
@@ -214,7 +195,7 @@ if (isset($_SESSION["Usgimnasio"]["id"])) {
                 <input type="checkbox" name="activo"> Activo
             </label>
 
-            <button type="submit">Registrar</button>
+            <button type="submit" names="btnregistrar">Registrar</button>
         </form>
     </div>
 </body>
