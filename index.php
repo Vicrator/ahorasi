@@ -57,13 +57,12 @@ session_start();
 
                 $si = false;
                 if (isset($_GET["validado"])) {
-                    var_dump($_SESSION);
+
                     $_SESSION = [];
                     session_destroy();
                     $si = true;
                 }
                 if (isset($_SESSION["Usuario"])) {
-                    var_dump($_SESSION["Usuario"]);
                 ?>
                     <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
@@ -74,7 +73,7 @@ session_start();
                 <?php
                 }
                 if (isset($_SESSION["gimnasio"])) {
-                    var_dump($_SESSION["gimnasio"]);
+
                 ?>
                     <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>

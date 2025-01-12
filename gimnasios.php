@@ -28,6 +28,7 @@ session_start();
 <body>
 
 
+
     <header>
         <div class="logo">
             <a href="index.php"><img src="img/logo2-removebg-preview.png" alt=""></a>
@@ -48,6 +49,7 @@ session_start();
                 if (isset($_SESSION["gimnasio"])) {
                 ?>
                     <li><a href="catalogo.php">Reportes</a></li>
+
                 <?php
                 }
                 ?>
@@ -56,14 +58,26 @@ session_start();
 
                 $si = false;
                 if (isset($_GET["validado"])) {
+
                     $_SESSION = [];
                     session_destroy();
                     $si = true;
                 }
-                if (isset($_SESSION["Usuario"]) || isset($_SESSION["gimnasio"])) {
+                if (isset($_SESSION["Usuario"])) {
                 ?>
                     <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
+                        <ul class="Menu_vertical">
+                            <li><a href="index.php?validado=true">Cerrar sesion</a></li>
+                        </ul>
+                    </div>
+                <?php
+                }
+                if (isset($_SESSION["gimnasio"])) {
+
+                ?>
+                    <div class="sesion ">
+                        <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
                         <ul class="Menu_vertical">
                             <li><a href="index.php?validado=true">Cerrar sesion</a></li>
                         </ul>
@@ -73,6 +87,7 @@ session_start();
                 ?>
                     <div class="sesion sesionmenu" style="margin: 0px;">
                         <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
+
                     </div>
                 <?php
                 }
@@ -90,14 +105,26 @@ session_start();
                 </ul>
             </div>
         <?php
+        }
+        if (isset($_SESSION["gimnasio"])) {
+        ?>
+            <div class="sesion ">
+                <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
+                <ul class="Menu_vertical">
+                    <li><a href="index.php?validado=true">Cerrar sesion</a></li>
+                </ul>
+            </div>
+        <?php
         } else {
         ?>
             <div class="sesion sesionmenu" style="margin: 0px;">
                 <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
+
             </div>
         <?php
         }
         ?>
+
     </header>
 
 
