@@ -182,7 +182,7 @@
                 }
                 ?>           <?php
             } else {
-            ?>                <div class="d-flex justify-content-center align-items-center vh-100">
+            ?>                <div class="d-flex justify-content-center align-items-center">
                     <h1>Todavia no publica ninguna membresia</h1>
                 </div>
            <?php
