@@ -2,10 +2,10 @@
 include("phpfull/conexion.php");
 
 // Validar si se obtuvo el id_gimnasio de $_GET
-if (!isset($_SESSION["gimnasio"]["id"])) {
+if (!isset($_SESSION["Usgimnasio"]["id"])) {
     die("No se proporcionó el id_gimnasio en la URL.");
 } else {
-    $id_gimnasio = $_SESSION["gimnasio"]["id"];
+    $id_gimnasio = $_SESSION["Usgimnasio"]["id"];
 
     // Verificar si se envió el formulario
 
