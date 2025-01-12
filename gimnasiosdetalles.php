@@ -48,22 +48,26 @@
                 if (isset($_SESSION["gimnasio"])) {
                 ?>
                     <li><a href="catalogo.php">Reportes</a></li>
+
                 <?php
                 }
                 ?>
                 <?php
 
-
-                $si = false;
-                if (isset($_GET["validado"])) {
-                    $_SESSION = [];
-                    session_destroy();
-                    $si = true;
-                }
-                if (isset($_SESSION["Usuario"]) || isset($_SESSION["gimnasio"])) {
+                if (isset($_SESSION["Usuario"])) {
                 ?>
                     <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
+                        <ul class="Menu_vertical">
+                            <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
+                        </ul>
+                    </div>
+                <?php
+                } elseif (isset($_SESSION["gimnasio"])) {
+
+                ?>
+                    <div class="sesion ">
+                        <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
                         <ul class="Menu_vertical">
                             <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                         </ul>
@@ -73,6 +77,7 @@
                 ?>
                     <div class="sesion sesionmenu" style="margin: 0px;">
                         <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
+
                     </div>
                 <?php
                 }
@@ -90,14 +95,25 @@
                 </ul>
             </div>
         <?php
+        } elseif (isset($_SESSION["gimnasio"])) {
+        ?>
+            <div class="sesion ">
+                <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
+                <ul class="Menu_vertical">
+                    <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
+                </ul>
+            </div>
+        <?php
         } else {
         ?>
             <div class="sesion sesionmenu" style="margin: 0px;">
                 <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
+
             </div>
         <?php
         }
         ?>
+
     </header>
 
 
@@ -179,9 +195,11 @@
                 ?>
             <?php
             } else {
-                ?>
-                <div class="d-flex justify-content-center align-items-center vh-100"><h1>Todavia no publica ninguna membresia</h1></div>
-                <?php
+            ?>
+                <div class="d-flex justify-content-center align-items-center vh-100">
+                    <h1>Todavia no publica ninguna membresia</h1>
+                </div>
+            <?php
             }
 
             ?>
