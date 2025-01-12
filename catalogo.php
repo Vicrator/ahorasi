@@ -115,11 +115,19 @@ session_start();
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <?php
             require './phpfull/conexion.php';
-
+            $idgym=$_GET["idgim"];
 
             $con = $conexion;
 
-            $sql = $con->prepare("SELECT * FROM membresias where Activo=1");
+            if(!isset($_SESSION["gimnasio"])){
+                $idgym=$_SESSION["gimnasio"]["id"];
+
+                $sql = $con->prepare("SELECT * FROM membresias where Activo=1 and id_gimnasio=$idgym");
+            }
+            else{
+                $sql = $con->prepare("SELECT * FROM membresias where Activo=1");
+            }
+            
             $sql->execute();
             $resultado = $sql->get_result();
 
@@ -155,6 +163,17 @@ session_start();
                             ?>
                         </div>
                     </div>
+
+                    <?php
+                    if (!isset($_SESSION["gimnasio"])) {
+                        ?>
+                        <div class="card shadow-sm">
+                            <a href="membresiadetalles.php?idgim=<?=$idgym?>" class="btn btn-primary">SUBIR NUEVA MEMBRESIA</a>
+                        </div>
+                        
+                        <?php
+                    }
+                    ?>
                 </div>
             <?php
             }

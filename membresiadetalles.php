@@ -1,3 +1,27 @@
+<?php
+include("phpfull/conexion.php");
+
+// Validar si se obtuvo el id_gimnasio de $_GET
+if (!isset($_SESSION["gimnasio"]["id"])) {
+    die("No se proporcionó el id_gimnasio en la URL.");
+} else {
+    $id_gimnasio = $_SESSION["gimnasio"]["id"];
+
+    // Verificar si se envió el formulario
+
+    $nombre_membresia = $conexion->real_escape_string($_POST['nombre_membresia']);
+    $precio = floatval($_POST['precio']);
+    $descripcion = $conexion->real_escape_string($_POST['descripcion']);
+    $activo = isset($_POST['activo']) ? 1 : 0;
+
+    // Insertar en la base de datos
+    $sql = "INSERT INTO membresias (id_gimnasio, Nombre_membresia, precio, descripcion, Activo) VALUES ('$id_gimnasio', '$nombre_membresia', '$precio', '$descripcion', '$activo')";
+
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +44,75 @@
     <link rel="stylesheet" href="css/stylegim.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GymPass</title>
+    <title>Registrar Membresía</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input,
+        textarea,
+        button {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .success {
+            color: #28a745;
+            text-align: center;
+        }
+
+        .error {
+            color: #dc3545;
+            text-align: center;
+        }
+    </style>
 
 </head>
 
@@ -44,164 +136,86 @@
                 <li><a href="index.php">Inicio</a></li>
                 <li><a href="gimnasios.php">Gimnasio</a></li>
                 <li><a href="catalogo.php">Membresias</a></li>
-               <?php
+                <?php
                 if (isset($_SESSION["gimnasio"])) {
-                ?>                    <li><a href="catalogo.php">Reportes</a></li>
+                ?> <li><a href="catalogo.php">Reportes</a></li>
 
-               <?php
+                <?php
                 }
-                ?>               <?php
+                ?> <?php
 
-                if (isset($_SESSION["Usuario"])) {
-                ?>                    <div class="sesion ">
+                    if (isset($_SESSION["Usuario"])) {
+                    ?> <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
                         <ul class="Menu_vertical">
                             <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                         </ul>
                     </div>
-               <?php
-                } elseif (isset($_SESSION["gimnasio"])) {
+                <?php
+                    } elseif (isset($_SESSION["gimnasio"])) {
 
-                ?>                    <div class="sesion ">
+                ?> <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
                         <ul class="Menu_vertical">
                             <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                         </ul>
                     </div>
-               <?php
-                } else {
-                ?>                    <div class="sesion sesionmenu" style="margin: 0px;">
+                <?php
+                    } else {
+                ?> <div class="sesion sesionmenu" style="margin: 0px;">
                         <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
 
                     </div>
-               <?php
-                }
+                <?php
+                    }
                 ?>
             </ul>
         </div>
-       <?php
+        <?php
         if (isset($_SESSION["Usuario"])) {
-        ?>            <div class="sesion sesionmenu">
+        ?> <div class="sesion sesionmenu">
                 <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
                 <ul class="Menu_vertical">
                     <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                 </ul>
             </div>
-       <?php
+        <?php
         } elseif (isset($_SESSION["gimnasio"])) {
-        ?>            <div class="sesion ">
+        ?> <div class="sesion ">
                 <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
                 <ul class="Menu_vertical">
                     <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                 </ul>
             </div>
-       <?php
+        <?php
         } else {
-        ?>            <div class="sesion sesionmenu" style="margin: 0px;">
+        ?> <div class="sesion sesionmenu" style="margin: 0px;">
                 <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
 
             </div>
-       <?php
+        <?php
         }
         ?>
     </header>
 
-
-
-
-   <?php
-    require './phpfull/conexion.php';
-    $con = $conexion;
-    $id = $_GET["id"];
-    $sql = $con->prepare("SELECT * FROM membresias  WHERE id_gimnasio=?");
-    $sql->bind_param("i", $id);
-    $sql->execute();
-    $resultado = $sql->get_result();
-    if ($row = $resultado->fetch_assoc()) {
-        $Usuario = $row["Usuario"];
-        $Cadena = $row["nombre_cadena"];
-        $sucursal = $row["nombre_sucursal"];
-        $ubicacion = $row["ubicacion"];
-        $idmem = $row["id_gimnasio"];
-    }
-
-    ?>    
     <div class="container">
-        <h1 style="text-align: center;">MEMBRESIAS ASOCIADAS</h1>
-        <br><br>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-           <?php
-            $sql = $con->prepare("SELECT * FROM membresias  WHERE id_gimnasio=$id");
-            $sql->execute();
-            $resultado = $sql->get_result();
-            if ($resultado->num_rows > 0) {
+        <h1>Registrar Membresía</h1>
+        <form method="POST" action="">
+            <label for="nombre_membresia">Nombre de la Membresía:</label>
+            <input type="text" id="nombre_membresia" name="nombre_membresia" required>
 
-                foreach ($resultado as $row) {
-                    $nombre = $row["Nombre_membresia"];
-                    $precio = $row["precio"];
-                    $descripcion = $row["descripcion"];
-                    $idmem = $row["id_membresia"];
-            ?>                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img src="img/Membresias/<?php echo $idmem ?>.jpeg" height="202px">
-                            <div class="card-body">
-                                <h3 class="card-title"><?php echo $nombre ?></h3>
-                                <p class="card-text"><?php echo $descripcion ?></p>
-                                <p class="card-text">$<?php echo number_format($precio, 2, '.', ',') ?></p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="" class="btn btn-primary">Detalles</a>
-                                    </div>
-                                    <a href="" class="btn btn-success">Comprar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-               <?php
-                }
-                ?>           <?php
-            } else {
-            ?>                <div class="d-flex justify-content-center align-items-center">
-                    <h1>Todavia no publica ninguna membresia</h1>
-                </div>
-           <?php
-            }
+            <label for="precio">Precio:</label>
+            <input type="number" step="0.01" id="precio" name="precio" required>
 
-            ?>        </div>
-    </div>
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
 
+            <label>
+                <input type="checkbox" name="activo"> Activo
+            </label>
 
-    <div class="container-fluid">
-        <div class="piedepagina">
-            <div class="terminos">
-                <a href="#">Terminos y condiciones</a>
-                <a href="#">Politicas de privacidad</a>
-                <a href="#">Volver al inicio</a>
-
-            </div>
-
-            <div class="logo">
-                <img src="img/logo2-removebg-preview.png" alt="" height="100%">
-            </div>
-
-            <div class="redes">
-                <!-- Facebook -->
-                <i class="fab fa-facebook-f"></i>
-
-                <!-- Twitter -->
-                <i class="fab fa-twitter"></i>
-
-                <!-- Instagram -->
-                <i class="fab fa-instagram"></i>
-
-                <!-- Linkedin -->
-                <i class="fab fa-linkedin-in"></i>
-                <!-- Whatsapp -->
-                <i class="fab fa-whatsapp"></i>
-
-            </div>
-
-        </div>
+            <button type="submit">Registrar</button>
+        </form>
     </div>
 </body>
 
