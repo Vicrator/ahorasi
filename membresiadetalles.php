@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,14 +16,16 @@ session_start();
 
     <link rel="stylesheet" href="css/styleinicio.css">
     <link rel="stylesheet" href="css/boostrapcopy.css">
+    <link rel="stylesheet" href="css/stylecatalogo.css">
+    <link rel="stylesheet" href="css/stylegim.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GymPass</title>
 
 </head>
 
-<body>
 
+<body>
 
 
     <header>
@@ -45,64 +44,64 @@ session_start();
                 <li><a href="index.php">Inicio</a></li>
                 <li><a href="gimnasios.php">Gimnasio</a></li>
                 <li><a href="catalogo.php">Membresias</a></li>
-                <?php
+               <?php
                 if (isset($_SESSION["gimnasio"])) {
-                ?> <li><a href="catalogo.php">Reportes</a></li>
+                ?>                    <li><a href="catalogo.php">Reportes</a></li>
 
-                <?php
+               <?php
                 }
-                ?> <?php
+                ?>               <?php
 
-                    if (isset($_SESSION["Usuario"])) {
-                    ?> <div class="sesion ">
+                if (isset($_SESSION["Usuario"])) {
+                ?>                    <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
                         <ul class="Menu_vertical">
                             <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                         </ul>
                     </div>
-                <?php
-                    } elseif (isset($_SESSION["gimnasio"])) {
+               <?php
+                } elseif (isset($_SESSION["gimnasio"])) {
 
-                ?> <div class="sesion ">
+                ?>                    <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
                         <ul class="Menu_vertical">
                             <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                         </ul>
                     </div>
-                <?php
-                    } else {
-                ?> <div class="sesion sesionmenu" style="margin: 0px;">
+               <?php
+                } else {
+                ?>                    <div class="sesion sesionmenu" style="margin: 0px;">
                         <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
 
                     </div>
-                <?php
-                    }
+               <?php
+                }
                 ?>
             </ul>
         </div>
-        <?php
+       <?php
         if (isset($_SESSION["Usuario"])) {
-        ?> <div class="sesion sesionmenu">
+        ?>            <div class="sesion sesionmenu">
                 <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
                 <ul class="Menu_vertical">
                     <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                 </ul>
             </div>
-        <?php
+       <?php
         } elseif (isset($_SESSION["gimnasio"])) {
-        ?> <div class="sesion ">
+        ?>            <div class="sesion ">
                 <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
                 <ul class="Menu_vertical">
                     <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                 </ul>
             </div>
-        <?php
+       <?php
         } else {
-        ?> <div class="sesion sesionmenu" style="margin: 0px;">
+        ?>            <div class="sesion sesionmenu" style="margin: 0px;">
                 <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
 
             </div>
-        <?php
+       <?php
         }
         ?>
     </header>
@@ -110,57 +109,65 @@ session_start();
 
 
 
+   <?php
+    require './phpfull/conexion.php';
+    $con = $conexion;
+    $id = $_GET["id"];
+    $sql = $con->prepare("SELECT * FROM membresias  WHERE id_gimnasio=?");
+    $sql->bind_param("i", $id);
+    $sql->execute();
+    $resultado = $sql->get_result();
+    if ($row = $resultado->fetch_assoc()) {
+        $Usuario = $row["Usuario"];
+        $Cadena = $row["nombre_cadena"];
+        $sucursal = $row["nombre_sucursal"];
+        $ubicacion = $row["ubicacion"];
+        $idmem = $row["id_gimnasio"];
+    }
 
+    ?>    
     <div class="container">
+        <h1 style="text-align: center;">MEMBRESIAS ASOCIADAS</h1>
+        <br><br>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <?php
-            require './phpfull/conexion.php';
-
-
-            $con = $conexion;
-
-            $sql = $con->prepare("SELECT * FROM membresias where Activo=1");
+           <?php
+            $sql = $con->prepare("SELECT * FROM membresias  WHERE id_gimnasio=$id");
             $sql->execute();
             $resultado = $sql->get_result();
+            if ($resultado->num_rows > 0) {
 
-
-
-            foreach ($resultado as $row) {
-                $nombre = $row["Nombre_membresia"];
-                $precio = $row["precio"];
-                $descripcion = $row["descripcion"];
-                $idmem = $row["id_membresia"];
-            ?> <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="img/Membresias/<?php echo $idmem ?>.jpeg" height="202px">
-                        <div class="card-body">
-                            <h3 class="card-title"><?php echo $nombre ?></h3>
-                            <p class="card-text"><?php echo $descripcion ?></p>
-                            <p class="card-text">$<?php echo number_format($precio, 2, '.', ',') ?></p>
-                            <?php
-                            if (!isset($_SESSION["gimnasio"])) {
-                            ?> <div class="d-flex justify-content-between align-items-center">
+                foreach ($resultado as $row) {
+                    $nombre = $row["Nombre_membresia"];
+                    $precio = $row["precio"];
+                    $descripcion = $row["descripcion"];
+                    $idmem = $row["id_membresia"];
+            ?>                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img src="img/Membresias/<?php echo $idmem ?>.jpeg" height="202px">
+                            <div class="card-body">
+                                <h3 class="card-title"><?php echo $nombre ?></h3>
+                                <p class="card-text"><?php echo $descripcion ?></p>
+                                <p class="card-text">$<?php echo number_format($precio, 2, '.', ',') ?></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="" class="btn btn-primary">Detalles</a>
+                                    </div>
                                     <a href="" class="btn btn-success">Comprar</a>
                                 </div>
-                            <?php
-                            } else {
-                            ?> <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="" class="btn btn-primary">Modificar</a>
-                                    </div>
-                                    <a href="" class="btn btn-success">Eliminar</a>
-                                </div>
-                            <?php
-                            }
-                            ?>
+                            </div>
                         </div>
                     </div>
+               <?php
+                }
+                ?>           <?php
+            } else {
+            ?>                <div class="d-flex justify-content-center align-items-center">
+                    <h1>Todavia no publica ninguna membresia</h1>
                 </div>
-            <?php
+           <?php
             }
-            ?>
 
-        </div>
+            ?>        </div>
     </div>
 
 
