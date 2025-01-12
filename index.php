@@ -76,12 +76,7 @@ session_start();
                 if (isset($_SESSION["gimnasio"])) {
                     var_dump($_SESSION["gimnasio"]);
                 ?>
-                    <div class="sesion ">
-                        <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
-                        <ul class="Menu_vertical">
-                            <li><a href="index.php?validado=true">Cerrar sesion</a></li>
-                        </ul>
-                    </div>
+
                 <?php
                 } else {
                     echo "holaaa".var_dump($_SESSION["gimnasio"]);
