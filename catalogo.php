@@ -173,7 +173,7 @@ session_start();
                 $idgym = $_SESSION["Usgimnasio"]["id"];
             ?>
                 <div class="card shadow-sm">
-                    <a href="membresiadetalles.php?idgim=<?= $idgym ?>" class="btn btn-primary">SUBIR NUEVA MEMBRESIA</a>
+                    <a href="membresiadetalles.php?idgim=<?php echo $idgym ?>" class="btn btn-primary">SUBIR NUEVA MEMBRESIA</a>
                 </div>
 
             <?php
