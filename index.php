@@ -63,8 +63,7 @@ session_start();
                         </ul>
                     </div>
                 <?php
-                }
-                elseif (isset($_SESSION["gimnasio"])) {
+                } elseif (isset($_SESSION["gimnasio"])) {
 
                 ?>
                     <div class="sesion ">
@@ -76,9 +75,8 @@ session_start();
                 <?php
                 } else {
                 ?>
-                    <div class="sesion sesionmenu" style="margin: 0px;">
+                    <div class="sesion" style="margin: 0px;">
                         <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
-
                     </div>
                 <?php
                 }
@@ -96,10 +94,9 @@ session_start();
                 </ul>
             </div>
         <?php
-        }
-        elseif (isset($_SESSION["gimnasio"])) {
+        } elseif (isset($_SESSION["gimnasio"])) {
         ?>
-            <div class="sesion ">
+            <div class="sesion sesionmenu">
                 <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
                 <ul class="Menu_vertical">
                     <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
