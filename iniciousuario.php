@@ -13,10 +13,9 @@
     <a href="index.php"><img src="img/logo2-removebg-preview.png" alt="" width="100px"></a>
     <div class="formularioclass">
         <h1>Iniciar sesion </h1>
-        <?php
+       <?php
         include("phpfull/login.php");
-        ?>
-        <form action="" method="post">
+        ?>        <form action="" method="post">
             <div class="usuario inputt">
                 <input type="text" placeholder="Usuario" name="usuario">
 

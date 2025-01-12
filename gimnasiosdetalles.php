@@ -44,82 +44,72 @@
                 <li><a href="index.php">Inicio</a></li>
                 <li><a href="gimnasios.php">Gimnasio</a></li>
                 <li><a href="catalogo.php">Membresias</a></li>
-                <?php
+               <?php
                 if (isset($_SESSION["gimnasio"])) {
-                ?>
-                    <li><a href="catalogo.php">Reportes</a></li>
+                ?>                    <li><a href="catalogo.php">Reportes</a></li>
 
-                <?php
+               <?php
                 }
-                ?>
-                <?php
+                ?>               <?php
 
                 if (isset($_SESSION["Usuario"])) {
-                ?>
-                    <div class="sesion ">
+                ?>                    <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
                         <ul class="Menu_vertical">
                             <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                         </ul>
                     </div>
-                <?php
+               <?php
                 } elseif (isset($_SESSION["gimnasio"])) {
 
-                ?>
-                    <div class="sesion ">
+                ?>                    <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
                         <ul class="Menu_vertical">
                             <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                         </ul>
                     </div>
-                <?php
+               <?php
                 } else {
-                ?>
-                    <div class="sesion sesionmenu" style="margin: 0px;">
+                ?>                    <div class="sesion sesionmenu" style="margin: 0px;">
                         <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
 
                     </div>
-                <?php
+               <?php
                 }
                 ?>
-
             </ul>
         </div>
-        <?php
+       <?php
         if (isset($_SESSION["Usuario"])) {
-        ?>
-            <div class="sesion sesionmenu">
+        ?>            <div class="sesion sesionmenu">
                 <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
                 <ul class="Menu_vertical">
                     <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                 </ul>
             </div>
-        <?php
+       <?php
         } elseif (isset($_SESSION["gimnasio"])) {
-        ?>
-            <div class="sesion ">
+        ?>            <div class="sesion ">
                 <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
                 <ul class="Menu_vertical">
                     <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                 </ul>
             </div>
-        <?php
+       <?php
         } else {
-        ?>
-            <div class="sesion sesionmenu" style="margin: 0px;">
+        ?>            <div class="sesion sesionmenu" style="margin: 0px;">
                 <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
 
             </div>
-        <?php
+       <?php
         }
         ?>
-
     </header>
 
 
 
 
-    <?php
+   <?php
     require './phpfull/conexion.php';
     $con = $conexion;
     $id = $_GET["id"];
@@ -135,8 +125,7 @@
         $idmem = $row["id_gimnasio"];
     }
 
-    ?>
-    <div class="container">
+    ?>    <div class="container">
         <div class="imagen" style="text-align: center;">
             <br>
             <h1 style="font-size: 50px;">Gimnasio <?= strtoupper($Cadena) ?></h1>
@@ -162,7 +151,7 @@
         <h1 style="text-align: center;">MEMBRESIAS ASOCIADAS</h1>
         <br><br>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <?php
+           <?php
             $sql = $con->prepare("SELECT * FROM membresias  WHERE id_gimnasio=$id");
             $sql->execute();
             $resultado = $sql->get_result();
@@ -173,8 +162,7 @@
                     $precio = $row["precio"];
                     $descripcion = $row["descripcion"];
                     $idmem = $row["id_membresia"];
-            ?>
-                    <div class="col">
+            ?>                    <div class="col">
                         <div class="card shadow-sm">
                             <img src="img/Membresias/<?php echo $idmem ?>.jpeg" height="202px">
                             <div class="card-body">
@@ -190,20 +178,17 @@
                             </div>
                         </div>
                     </div>
-                <?php
+               <?php
                 }
-                ?>
-            <?php
+                ?>           <?php
             } else {
-            ?>
-                <div class="d-flex justify-content-center align-items-center vh-100">
+            ?>                <div class="d-flex justify-content-center align-items-center vh-100">
                     <h1>Todavia no publica ninguna membresia</h1>
                 </div>
-            <?php
+           <?php
             }
 
-            ?>
-        </div>
+            ?>        </div>
     </div>
 
 

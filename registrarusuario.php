@@ -15,10 +15,9 @@
     <a href="index.php"><img src="img/logo2-removebg-preview.png" alt="" width="100px"></a>
     <div class="formularioclass">
         <h1>Registrar usuario </h1>
-        <?php
+       <?php
         include("phpfull/registrar.php");
         ?>
-
         <form action="" method="post">
             <div class="usuario inputt">
                 <input type="text" placeholder="Usuario" name="usuario" maxlength="25">

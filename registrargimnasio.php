@@ -16,10 +16,9 @@
     <a href="index.php"><img src="img/logo2-removebg-preview.png" alt="" width="100px"></a>
     <div class="formularioclass">
         <h1>Registrar Gimnasio </h1>
-        <?php
+       <?php
         include("phpfull/registrargimnasiologica.php");
         ?>
-
         <form action="" method="post">
             <div class="separadores">
                 <div class="division">

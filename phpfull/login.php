@@ -17,8 +17,7 @@ if (!empty($_POST["btnsesion"])) {
             /*Mientras creo la parte del usuario*/
             //echo '<div class="alert alert-danger text-center">Muy bien</div>'; 
             $comparacion = $Resultados->fetch_assoc();
-            if ($comparacion['tipousuario'] == "1") {
-                
+            if ($comparacion['tipousuario'] == "1") {                
                 $_SESSION["Usuario"]=$comparacion['Usuario'];
                 //echo '<div class="alert alert-danger text-center">Entro</div>'; 
                 /*Tipo de vista usuario tipo cliente
@@ -27,7 +26,6 @@ if (!empty($_POST["btnsesion"])) {
                 //exit;
                 // Realiza la redirección
                 header("Location:/index.php");
-
                 // Asegúrate de detener la ejecución del script después de la redirección
                 exit();
             } elseif($comparacion['tipousuario'] == "2") {
