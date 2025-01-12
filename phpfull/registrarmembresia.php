@@ -18,7 +18,7 @@ if (empty($_POST["nombre_membresia"]) || empty($_POST["precio"]) || empty($_POST
             // Verificar si se envió el formulario
 
             $nombre_membresia = $_POST['nombre_membresia'];
-            $precio = $_POST['precio'];
+            $precio = $_POST['precio']; 
             $descripcion = $_POST['descripcion'];
             $activo = isset($_POST['activo']) ? 1 : 0;
 
