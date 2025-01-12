@@ -48,7 +48,7 @@ session_start();
                 if (isset($_SESSION["gimnasio"])) {
                 ?>
                     <li><a href="catalogo.php">Reportes</a></li>
-                    
+
                 <?php
                 }
                 ?>
@@ -72,8 +72,8 @@ session_start();
                     </div>
                 <?php
                 }
-                var_dump(isset($_SESSION["gimnasio"]));
-                 if (isset($_SESSION["gimnasio"])) {
+                if (isset($_SESSION["gimnasio"])) {
+                    var_dump($_SESSION["gimnasio"]);
                 ?>
                     <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
@@ -86,7 +86,7 @@ session_start();
                 ?>
                     <div class="sesion sesionmenu" style="margin: 0px;">
                         <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
-                        
+
                     </div>
                 <?php
                 }
