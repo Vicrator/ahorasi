@@ -76,10 +76,14 @@ session_start();
                 if (isset($_SESSION["gimnasio"])) {
                     var_dump($_SESSION["gimnasio"]);
                 ?>
-
+                    <div class="sesion ">
+                        <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
+                        <ul class="Menu_vertical">
+                            <li><a href="index.php?validado=true">Cerrar sesion</a></li>
+                        </ul>
+                    </div>
                 <?php
                 } else {
-                    echo "holaaa".var_dump($_SESSION["gimnasio"]);
                 ?>
                     <div class="sesion sesionmenu" style="margin: 0px;">
                         <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
@@ -101,14 +105,26 @@ session_start();
                 </ul>
             </div>
         <?php
+        }
+        if (isset($_SESSION["gimnasio"])) {
+        ?>
+            <div class="sesion ">
+                <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
+                <ul class="Menu_vertical">
+                    <li><a href="index.php?validado=true">Cerrar sesion</a></li>
+                </ul>
+            </div>
+        <?php
         } else {
         ?>
             <div class="sesion sesionmenu" style="margin: 0px;">
                 <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
+
             </div>
         <?php
         }
         ?>
+
     </header>
 
 
