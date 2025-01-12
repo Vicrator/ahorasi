@@ -8,12 +8,10 @@ if (empty($_POST["nombre_membresia"]) || empty($_POST["precio"]) || empty($_POST
 
 
     if (!empty($_POST["btnregistrar"])) {
-
-
-
         // Validar si se obtuvo el id_gimnasio de $_GET
         if (isset($_SESSION["Usgimnasio"]["id"])) {
-            ("No se proporcionó el id_gimnasio en la URL.");
+            header("Location:/membresiadetalles.php?mensaje=<div class='alert alert-danger text-center'>No se proporcionó el id_gimnasio en la URL.</div>");
+            exit();
         } else {
             $id_gimnasio = $_SESSION["Usgimnasio"]["id"];
 
@@ -26,10 +24,10 @@ if (empty($_POST["nombre_membresia"]) || empty($_POST["precio"]) || empty($_POST
 
             // Insertar en la base de datos
             $sql = "INSERT INTO membresias (id_gimnasio, Nombre_membresia, precio, descripcion, Activo) VALUES ('$id_gimnasio', '$nombre_membresia', '$precio', '$descripcion', '$activo')";
-            $stms=$conexion->prepare($sql);
+            $stms = $conexion->prepare($sql);
             $stms->execute();
             header("Location:/membresiadetalles.php?mensaje=<div class='alert alert-danger text-center'>Datos insertados correctamente</div>");
-    exit();
+            exit();
         }
     }
 }
