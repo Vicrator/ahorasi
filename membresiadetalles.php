@@ -9,10 +9,10 @@ if (isset($_SESSION["Usgimnasio"]["id"])) {
 
     // Verificar si se envió el formulario
 
-    $nombre_membresia = $conexion->real_escape_string($_POST['nombre_membresia']);
-    $precio = floatval($_POST['precio']);
-    $descripcion = $conexion->real_escape_string($_POST['descripcion']);
-    $activo = isset($_POST['activo']) ? 1 : 0;
+    $nombre_membresia =$_POST['nombre_membresia'];
+    $precio =$_POST['precio'];
+    $descripcion = $_POST['descripcion'];
+    $activo =$_POST['activo'];
 
     // Insertar en la base de datos
     $sql = "INSERT INTO membresias (id_gimnasio, Nombre_membresia, precio, descripcion, Activo) VALUES ('$id_gimnasio', '$nombre_membresia', '$precio', '$descripcion', '$activo')";
