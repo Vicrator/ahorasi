@@ -118,15 +118,14 @@ session_start();
 
             $con = $conexion;
 
-            if(isset($_SESSION["gimnasio"])){
-                $idgym=$_SESSION["Usgimnasio"]["id"];
+            if (isset($_SESSION["gimnasio"])) {
+                $idgym = $_SESSION["Usgimnasio"]["id"];
 
                 $sql = $con->prepare("SELECT * FROM membresias where Activo=1 and id_gimnasio=$idgym");
-            }
-            else{
+            } else {
                 $sql = $con->prepare("SELECT * FROM membresias where Activo=1");
             }
-            
+
             $sql->execute();
             $resultado = $sql->get_result();
 
@@ -163,21 +162,22 @@ session_start();
                         </div>
                     </div>
 
-                    <?php
-                    if (!isset($_SESSION["gimnasio"])) {
-                        ?>
-                        <div class="card shadow-sm">
-                            <a href="membresiadetalles.php?idgim=<?=$idgym?>" class="btn btn-primary">SUBIR NUEVA MEMBRESIA</a>
-                        </div>
-                        
-                        <?php
-                    }
-                    ?>
                 </div>
             <?php
             }
             ?>
 
+
+            <?php
+            if (isset($_SESSION["gimnasio"])) {
+            ?>
+                <div class="card shadow-sm">
+                    <a href="membresiadetalles.php?idgim=<?= $idgym ?>" class="btn btn-primary">SUBIR NUEVA MEMBRESIA</a>
+                </div>
+
+            <?php
+            }
+            ?>
         </div>
     </div>
 
