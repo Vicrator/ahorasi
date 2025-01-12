@@ -7,9 +7,9 @@ if (empty($_POST["nombre_membresia"]) || empty($_POST["precio"]) || empty($_POST
 } else {
 
 
-    if (!empty($_POST["btnregistrar"])) {
+    if (empty($_POST["btnregistrar"])) {
         // Validar si se obtuvo el id_gimnasio de $_GET
-        if (isset($_SESSION["Usgimnasio"]["id"])) {
+        if (!isset($_SESSION["Usgimnasio"]["id"])) {
             header("Location:/membresiadetalles.php?mensaje=<div class='alert alert-danger text-center'>No se proporcionó el id_gimnasio en la URL.</div>");
             exit();
         } else {
