@@ -37,7 +37,9 @@ if (!empty($_POST["btnsesion"])) {
                 echo '<div class="alert alert-danger text-center">Tipo de usuario gimnasio</div>'; */
             }
         } else {
-            echo '<div class="alert alert-danger text-center">Usuario no existe</div>'; 
+            $mensaje= '<div class="alert alert-danger text-center">Usuario no existe</div>'; 
+            header("Location:/iniciousuario.php");
+            exit();
         }
     }
 }

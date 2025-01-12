@@ -12,9 +12,13 @@
 <body>
     <a href="index.php"><img src="img/logo2-removebg-preview.png" alt="" width="100px"></a>
     <div class="formularioclass">
-        <h1>Iniciar sesion </h1><?php
-        include("phpfull/login.php");
-        ?><form action="" method="post">
+        <h1>Iniciar sesion </h1>
+        <?php
+        if(isset($mensaje)){
+            echo $mensaje;
+        }
+        ?>
+        <form action="phpfull/login.php" method="post">
             <div class="usuario inputt">
                 <input type="text" placeholder="Usuario" name="usuario">
 
