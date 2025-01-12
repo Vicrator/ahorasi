@@ -28,6 +28,7 @@ session_start();
 <body>
 
 
+
     <header>
         <div class="logo">
             <a href="index.php"><img src="img/logo2-removebg-preview.png" alt=""></a>
@@ -54,14 +55,6 @@ session_start();
                 ?>
                 <?php
 
-
-                $si = false;
-                if (isset($_GET["validado"])) {
-
-                    $_SESSION = [];
-                    session_destroy();
-                    $si = true;
-                }
                 if (isset($_SESSION["Usuario"])) {
                 ?>
                     <div class="sesion ">
@@ -78,7 +71,7 @@ session_start();
                     <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
                         <ul class="Menu_vertical">
-                            <li><a href="index.php?validado=true">Cerrar sesion</a></li>
+                            <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                         </ul>
                     </div>
                 <?php
@@ -100,7 +93,7 @@ session_start();
             <div class="sesion sesionmenu">
                 <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
                 <ul class="Menu_vertical">
-                    <li><a href="index.php?validado=true">Cerrar sesion</a></li>
+                    <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                 </ul>
             </div>
         <?php
