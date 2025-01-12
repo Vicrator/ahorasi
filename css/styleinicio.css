@@ -118,6 +118,8 @@ header .sesion a:hover{
     }
     .menu .sesion{
         display: block;
+        position: relative;
+        z-index: 10;
     }
 
     .menu_responsive:checked + .menu{
