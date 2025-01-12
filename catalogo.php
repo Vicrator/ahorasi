@@ -60,7 +60,7 @@ session_start();
                     <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
                         <ul class="Menu_vertical">
-                            <li><a href="index.php?validado=true">Cerrar sesion</a></li>
+                            <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                         </ul>
                     </div>
                 <?php
@@ -103,7 +103,7 @@ session_start();
             <div class="sesion ">
                 <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
                 <ul class="Menu_vertical">
-                    <li><a href="index.php?validado=true">Cerrar sesion</a></li>
+                    <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                 </ul>
             </div>
         <?php
