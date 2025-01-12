@@ -63,6 +63,7 @@ session_start();
                     $si = true;
                 }
                 if (isset($_SESSION["Usuario"])) {
+                    var_dump($_SESSION["Usuario"]);
                 ?>
                     <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
