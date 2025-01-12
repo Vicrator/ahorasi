@@ -118,7 +118,7 @@ session_start();
 
             $con = $conexion;
 
-            if(!isset($_SESSION["gimnasio"])){
+            if(isset($_SESSION["gimnasio"])){
                 $idgym=$_SESSION["Usgimnasio"]["id"];
 
                 $sql = $con->prepare("SELECT * FROM membresias where Activo=1 and id_gimnasio=$idgym");
