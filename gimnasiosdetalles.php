@@ -150,33 +150,41 @@
             $sql = $con->prepare("SELECT * FROM membresias  WHERE id_gimnasio=$id");
             $sql->execute();
             $resultado = $sql->get_result();
-            foreach ($resultado as $row) {
-                $nombre = $row["Nombre_membresia"];
-                $precio = $row["precio"];
-                $descripcion = $row["descripcion"];
-                $idmem = $row["id_membresia"];
+            if ($resultado->num_rows > 0) {
+
+                foreach ($resultado as $row) {
+                    $nombre = $row["Nombre_membresia"];
+                    $precio = $row["precio"];
+                    $descripcion = $row["descripcion"];
+                    $idmem = $row["id_membresia"];
             ?>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="img/Membresias/<?php echo $idmem ?>.jpeg" height="202px">
-                        <div class="card-body">
-                            <h3 class="card-title"><?php echo $nombre ?></h3>
-                            <p class="card-text"><?php echo $descripcion ?></p>
-                            <p class="card-text">$<?php echo number_format($precio, 2, '.', ',') ?></p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <a href="" class="btn btn-primary">Detalles</a>
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img src="img/Membresias/<?php echo $idmem ?>.jpeg" height="202px">
+                            <div class="card-body">
+                                <h3 class="card-title"><?php echo $nombre ?></h3>
+                                <p class="card-text"><?php echo $descripcion ?></p>
+                                <p class="card-text">$<?php echo number_format($precio, 2, '.', ',') ?></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="" class="btn btn-primary">Detalles</a>
+                                    </div>
+                                    <a href="" class="btn btn-success">Comprar</a>
                                 </div>
-                                <a href="" class="btn btn-success">Comprar</a>
                             </div>
                         </div>
                     </div>
-                </div>
+                <?php
+                }
+                ?>
             <?php
+            } else {
+                ?>
+                <div class="d-flex justify-content-center align-items-center vh-100"><h1>Todavia no publica ninguna membresia</h1></div>
+                <?php
             }
+
             ?>
-
-
         </div>
     </div>
 
