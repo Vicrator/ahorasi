@@ -72,7 +72,7 @@ session_start();
                     </div>
                 <?php
                 }
-                var_dump($_SESSION);
+                var_dump(isset($_SESSION["gimnasio"]));
                  if (isset($_SESSION["gimnasio"])) {
                 ?>
                     <div class="sesion ">
