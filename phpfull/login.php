@@ -4,7 +4,6 @@ include("conexion.php");
 if (!empty($_POST["btnsesion"])) {
     if (empty($_POST["usuario"]) || empty($_POST["password"])) {
         //echo '<div class="alert alert-danger text-center" >User o password vacios</div>'; 
-        session_start();
     } else {
         $usuario = $_POST["usuario"];
         $password = $_POST["password"];
@@ -14,6 +13,7 @@ if (!empty($_POST["btnsesion"])) {
 
         $Resultados = $sql->get_result();
         if ($Resultados->num_rows > 0) {
+            session_start();
             /*Mientras creo la parte del usuario*/
             //echo '<div class="alert alert-danger text-center">Muy bien</div>'; 
             $comparacion = $Resultados->fetch_assoc();
