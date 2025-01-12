@@ -84,6 +84,7 @@ session_start();
                     </div>
                 <?php
                 } else {
+                    echo "holaaa".var_dump($_SESSION["gimnasio"]);
                 ?>
                     <div class="sesion sesionmenu" style="margin: 0px;">
                         <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
