@@ -1,4 +1,5 @@
 <?php
+include("phpfull/config.php");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -22,7 +23,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GymPass</title>
-    <script src="https://www.paypal.com/sdk/js?client-id=AfaycSjILuybCuvD-t2ppA2OHG_Kno4vQOLmSg_H0VkdsDQZaXhgSyALkKQJBGHFF32YmCkXonwAy449&currency=MXN"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=<?=Usuarip_Paypal?>&currency=MXN"></script>
 
 </head>
 
