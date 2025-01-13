@@ -13,6 +13,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script src="https://sandbox.paypal.com/sdk/js?client-id=AfaycSjILuybCuvD-t2ppA2OHG_Kno4vQOLmSg_H0VkdsDQZaXhgSyALkKQJBGHFF32YmCkXonwAy449&
+        currency=MXN"></script>
 
     <link rel="stylesheet" href="css/styleinicio.css">
     <link rel="stylesheet" href="css/boostrapcopy.css">
@@ -100,8 +102,6 @@
         <?php
         }
         ?>
-        <script src="https://sandbox.paypal.com/sdk/js?client-id=AfaycSjILuybCuvD-t2ppA2OHG_Kno4vQOLmSg_H0VkdsDQZaXhgSyALkKQJBGHFF32YmCkXonwAy449&
-        currency=MXN"></script>
     </header>
 
 
@@ -112,6 +112,12 @@
 </body>
 
 <script>
-    paypal.Buttons().render("#button-paypal");
+    paypal.Buttons({
+        style: {
+            color: 'blue',
+            shape: 'pill'
+        }
+    }).render("#button-paypal");
 </script>
+
 </html>
