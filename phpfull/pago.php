@@ -41,7 +41,7 @@ if (empty($_GET["id"])) {
         $Resultados = $sql->get_result();
 
 
-        $sql = $conexion->prepare("INSERT INTO compras (id_usuario,id_membresia,nombre_gimnasio,total) VALUES (?,?,?,?,?)");
+        $sql = $conexion->prepare("INSERT INTO compras (id_usuario,id_membresia,nombre_gimnasio,total) VALUES (?,?,?,?)");
         $sql->bind_param("iiss",$idusuario,$idmembresia,$nombregim,$precio );
         $sql->execute();
         header("Location:/catalogo.php?mensaje=<div class='alert alert-danger text-center'>Membresia comprada</div>");
