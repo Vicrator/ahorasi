@@ -107,17 +107,12 @@
 
 
 
-    <div id="button-paypal"></div>
+    <div id="paypal-button-container"></div>
 
 </body>
 
 <script>
-    paypal.Buttons({
-        style: {
-            color: 'blue',
-            shape: 'pill'
-        }
-    }).render("#button-paypal");
+    paypal.Buttons().render("paypal-button-container");
 </script>
 
 </html>
