@@ -157,8 +157,8 @@ session_start();
                             <?php
                             } else {
                             ?> <div class="d-flex justify-content-between align-items-center">
+                                    <p>Estado <?= $activo ?></p>
                                     <div class="btn-group">
-                                        <p>Estado <?= $activo?></p>
                                         <?php
                                         if ($activo == "Activo") {
 
