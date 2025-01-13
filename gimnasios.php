@@ -122,7 +122,8 @@ session_start();
 
         if (isset($_SESSION["gimnasio"])) {
             $idgym = $_SESSION["gimnasio"];
-            $sql = $con->prepare("SELECT * FROM gimnasio WHERE Usuario=$idgym");
+            $sql = $con->prepare("SELECT * FROM gimnasio WHERE Usuario=?");
+            $sql->bind_param("s",$idgym);
         } else {
             $sql = $con->prepare("SELECT * FROM gimnasio ");
         }
