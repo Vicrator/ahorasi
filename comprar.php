@@ -124,6 +124,9 @@
                         }
                     }]
                 });
+            },
+            onCancel:function(data){
+                alert("EL PAGO FUE CANCELADO");
             }
         }).render("#button-paypal");
     </script>
