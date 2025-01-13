@@ -141,7 +141,7 @@ session_start();
                 $precio = $row["precio"];
                 $descripcion = $row["descripcion"];
                 $idmem = $row["id_membresia"];
-                $activo= $row["id_membresia"] ==1? "Activo":"Inactivo";
+                $activo= $row["Activo"] ==1? "Activo":"Inactivo";
             ?> <div class="col">
                     <div class="card shadow-sm">
                         <img src="img/Membresias/<?php echo $idmem ?>.jpeg" height="202px">
@@ -160,7 +160,7 @@ session_start();
                                     <div class="btn-group">
                                         <p>Estado <?= $activo?></p>
                                     </div>
-                                    <a href="eliminarmembresia.php?id_membresia=<?=$idmem?>" class="btn btn-success">Eliminar</a>
+                                    <a href="phpfull/eliminarmembresia.php?id_membresia=<?=$idmem?>" class="btn btn-success">Eliminar</a>
                                 </div>
                             <?php
                             }

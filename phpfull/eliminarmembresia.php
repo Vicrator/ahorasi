@@ -9,11 +9,11 @@ if (isset($_GET['id_membresia'])) {
 
     if ($sql->execute()) {
         // Redirige con un mensaje de éxito
-        header("Location: catalogo.php?mensaje=Membresia inabilitada");
+        header("Location: /catalogo.php?mensaje=Membresia inabilitada");
         exit();
     } else {
         // En caso de error
-        header("Location: catalogo.php?mensaje=error");
+        header("Location: /catalogo.php?mensaje=error");
         exit();
     }
 }
