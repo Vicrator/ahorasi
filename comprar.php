@@ -19,7 +19,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GymPass</title>
-    <script src="https://www.paypal.com/sdk/js?client-id=AfaycSjILuybCuvD-t2ppA2OHG_Kno4vQOLmSg_H0VkdsDQZaXhgSyALkKQJBGHFF32YmCkXonwAy449"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AfaycSjILuybCuvD-t2ppA2OHG_Kno4vQOLmSg_H0VkdsDQZaXhgSyALkKQJBGHFF32YmCkXonwAy449&currency=MXN"></script>
 
 </head>
 
@@ -120,7 +120,7 @@
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: '10.00' // Monto de la transacción
+                            value: <?=$_GET["precio"]?> // Monto de la transacción
                         }
                     }]
                 });

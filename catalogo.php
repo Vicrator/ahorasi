@@ -152,7 +152,20 @@ session_start();
                             <?php
                             if (!isset($_SESSION["gimnasio"])) {
                             ?> <div class="d-flex justify-content-between align-items-center">
-                                    <a href="comprar.php" class="btn btn-success">Comprar</a>
+                                    <?php
+                                    if (!isset($_SESSION["Usuario"])) {
+
+                                    ?>
+                                        <a href="iniciousuario.php" class="btn btn-success">Comprar</a>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <a href="comprar.php?precio=<?=$precio?>" class="btn btn-success">Comprar</a>
+                                    <?php
+                                    }
+                                    ?>
+
+                                    
                                 </div>
                             <?php
                             } else {
