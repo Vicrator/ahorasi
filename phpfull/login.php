@@ -20,6 +20,7 @@ if (!empty($_POST["btnsesion"])) {
             if ($comparacion['tipousuario'] == "1") {                
 
                 $_SESSION["Usuario"]=$comparacion['Usuario'];
+                $_SESSION["Usiari"]["id"]=$comparacion["id"];
                 //echo '<div class="alert alert-danger text-center">Entro</div>'; 
                 /*Tipo de vista usuario tipo cliente
                 echo '<div class="alert alert-danger text-center">Tipo de usuario cliente</div>'; */

@@ -107,6 +107,11 @@
 
 
     <div class="contenedor">
+        <?php
+        if(!isset($_GET["mensaje"])){
+            echo $_GET["mensaje"];
+        }
+        ?>
         <div id="button-paypal"></div>
     </div>
     <script>
@@ -124,6 +129,12 @@
                         }
                     }]
                 });
+            },
+            onApprove:function(data,actions){
+                actions.order.capture().then(function(detalles){
+                    window.location.href="phpfull/pago.php?id=<?=$_GET["id"]?>";
+                });
+                
             },
             onCancel:function(data){
                 alert("EL PAGO FUE CANCELADO");

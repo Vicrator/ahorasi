@@ -160,7 +160,7 @@ session_start();
                                     <?php
                                     } else {
                                     ?>
-                                        <a href="comprar.php?precio=<?=$precio?>" class="btn btn-success">Comprar</a>
+                                        <a href="comprar.php?precio=<?=$precio?>&id=<?=$idmem?>" class="btn btn-success">Comprar</a>
                                     <?php
                                     }
                                     ?>
