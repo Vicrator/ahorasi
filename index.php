@@ -1,6 +1,7 @@
 <?php
 session_start();
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -43,63 +44,63 @@ session_start();
                 <li><a href="index.php">Inicio</a></li>
                 <li><a href="gimnasios.php">Gimnasio</a></li>
                 <li><a href="catalogo.php">Membresias</a></li>
-               <?php
+                <?php
                 if (isset($_SESSION["gimnasio"])) {
-                ?>                    <li><a href="catalogo.php">Reportes</a></li>
+                ?> <li><a href="catalogo.php">Reportes</a></li>
 
-               <?php
+                <?php
                 }
-                ?>               <?php
+                ?> <?php
 
-                if (isset($_SESSION["Usuario"])) {
-                ?>                    <div class="sesion ">
+                    if (isset($_SESSION["Usuario"])) {
+                    ?> <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
                         <ul class="Menu_vertical">
                             <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                         </ul>
                     </div>
-               <?php
-                } elseif (isset($_SESSION["gimnasio"])) {
+                <?php
+                    } elseif (isset($_SESSION["gimnasio"])) {
 
-                ?>                    <div class="sesion ">
+                ?> <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
                         <ul class="Menu_vertical">
                             <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                         </ul>
                     </div>
-               <?php
-                } else {
-                ?>                    <div class="sesion" style="margin: 0px;">
+                <?php
+                    } else {
+                ?> <div class="sesion" style="margin: 0px;">
                         <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
                     </div>
-               <?php
-                }
+                <?php
+                    }
                 ?>
             </ul>
         </div>
-       <?php
+        <?php
         if (isset($_SESSION["Usuario"])) {
-        ?>            <div class="sesion sesionmenu">
+        ?> <div class="sesion sesionmenu">
                 <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
                 <ul class="Menu_vertical">
                     <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                 </ul>
             </div>
-       <?php
+        <?php
         } elseif (isset($_SESSION["gimnasio"])) {
-        ?>            <div class="sesion sesionmenu">
+        ?> <div class="sesion sesionmenu">
                 <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
                 <ul class="Menu_vertical">
                     <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                 </ul>
             </div>
-       <?php
+        <?php
         } else {
-        ?>            <div class="sesion sesionmenu" style="margin: 0px;">
+        ?> <div class="sesion sesionmenu" style="margin: 0px;">
                 <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
 
             </div>
-       <?php
+        <?php
         }
         ?>
     </header>
@@ -175,46 +176,44 @@ session_start();
         </div>
     </div>
 
+
+
     <div class="cont" style="width: 100%;">
         <div class="container-fluid  row" style="width: 100%; margin-left:0px;">
-            <div class="card" style="width: 18rem; margin-top: 30px;">
-                <img src="img/logo.jpeg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Primer titulo</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint amet quasi enim
-                        perferendis fugiat, qui iusto temporibus numquam culpa, quaerat, ratione fuga ea magnam beatae
-                        consequuntur dicta harum repellat illum!</p>
-                    <a href="#" class="btn btn-primary">Saber mas...</a>
-                </div>
-            </div>
 
-            <div class="card" style="width: 18rem; margin-top: 30px;">
-                <img src="img/logo2.jpeg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Segundo Titulo</h5>
-                    <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi porro fugit
-                        dolore
-                        doloribus laudantium fuga nulla odit optio, ullam alias vero harum. Nobis, fugiat? Iste sit
-                        molestiae iusto fuga harum.</p>
-                    <a href="#" class="btn btn-primary">Saber mas...</a>
-                </div>
-            </div>
+            <?php
+            include("phpfull/conexion.php");
 
-            <div class="card" style="width: 18rem; margin-top: 30px;">
-                <img src="img/logo.jpeg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Tercer titulo</h5>
-                    <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit aperiam
-                        sunt fuga repudiandae rerum, sequi iure, beatae, eius repellendus dolor exercitationem ab ullam
-                        sit.
-                        Sed quis cumque alias ratione blanditiis!</p>
-                    <a href="#" class="btn btn-primary">Saber mas...</a>
+
+            $con = $conexion;
+
+            $sql = $con->prepare("SELECT * FROM gimnasio ");
+            $sql->execute();
+            $resultado = $sql->get_result();
+
+
+            foreach ($resultado as $row) {
+                $Usuario = $row["Usuario"];
+                $Cadena = $row["nombre_cadena"];
+                $sucursal = $row["nombre_sucursal"];
+                $ubicacion = $row["ubicacion"];
+                $idmem = $row["id_gimnasio"];
+            ?>
+                <div class="card" style="width: 18rem; margin-top: 30px;">
+                    <img src="img/logo.jpeg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $Cadena ?></h5>
+                        <p class="card-text">
+                            <?= $ubicacion ?>
+                        </p>
+                        <a href="gimnasiosdetalles.php?id=<?= $idmem ?>" class="btn btn-primary">Detalles</a>
+                    </div>
                 </div>
-            </div>
+            <?php
+            }
+            ?>
         </div>
     </div>
-
-
     <div class="container-fluid">
         <div class="piedepagina">
             <div class="terminos">
