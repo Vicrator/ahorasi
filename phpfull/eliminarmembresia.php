@@ -13,7 +13,7 @@ if (isset($_GET['id_membresia'])) {
     } 
 
     if (isset($_GET["id_memb"])) {
-        $id_membresia =$_GET['id_membresia']; 
+        $id_membresia =$_GET['id_memb']; 
         $sql = $conexion->prepare("UPDATE membresias SET activo = 1 WHERE id_membresia = ?");
         $sql->bind_param("i", $id_membresia);
         $sql->execute();

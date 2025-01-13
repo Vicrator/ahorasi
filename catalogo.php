@@ -158,7 +158,7 @@ session_start();
                             } else {
                             ?> <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <p>Estado <?= $activo ?></p>
+                                        <p>Estado <?= $activo?></p>
                                         <?php
                                         if ($activo == 1) {
 
@@ -167,8 +167,6 @@ session_start();
                                         <?php
                                         } else {
                                         ?>
-
-                                            ?>
                                             <a href="phpfull/eliminarmembresia.php?id_memb=<?= $idmem ?>" class="btn btn-success">Habilitar</a>
                                         <?php
                                         }
