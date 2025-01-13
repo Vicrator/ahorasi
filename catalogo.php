@@ -112,6 +112,11 @@ session_start();
 
 
     <div class="container">
+    <?php
+        if(isset($_GET["mensaje"])){
+            echo $_GET["mensaje"];
+        }
+        ?>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <?php
             require './phpfull/conexion.php';
@@ -121,7 +126,7 @@ session_start();
             if (isset($_SESSION["gimnasio"])) {
                 $idgym = $_SESSION["Usgimnasio"]["id"];
 
-                $sql = $con->prepare("SELECT * FROM membresias where Activo=1 and id_gimnasio=$idgym");
+                $sql = $con->prepare("SELECT * FROM membresias where id_gimnasio=$idgym");
             } else {
                 $sql = $con->prepare("SELECT * FROM membresias where Activo=1");
             }
@@ -136,6 +141,7 @@ session_start();
                 $precio = $row["precio"];
                 $descripcion = $row["descripcion"];
                 $idmem = $row["id_membresia"];
+                $activo= $row["id_membresia"] ==1? "Activo":"Inactivo";
             ?> <div class="col">
                     <div class="card shadow-sm">
                         <img src="img/Membresias/<?php echo $idmem ?>.jpeg" height="202px">
@@ -152,9 +158,9 @@ session_start();
                             } else {
                             ?> <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="" class="btn btn-primary">Modificar</a>
+                                        <p>Estado <?= $activo?></p>
                                     </div>
-                                    <a href="" class="btn btn-success">Eliminar</a>
+                                    <a href="eliminarmembresia.php?id_membresia=<?=$idmem?>" class="btn btn-success">Eliminar</a>
                                 </div>
                             <?php
                             }
