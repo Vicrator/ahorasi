@@ -126,10 +126,10 @@ $resultado = $query->get_result();
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Precio</th>
-                    <th>Fecha</th>
+                    <th>ID usuario</th>
+                    <th>ID membresia</th>
+                    <th>Nombre gimnadio</th>
+                    <th>Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -138,10 +138,10 @@ $resultado = $query->get_result();
                     while ($fila = $resultado->fetch_assoc()) {
                         echo "<tr>
                                 <td>" . htmlspecialchars($fila['id']) . "</td>
-                                <td>" . htmlspecialchars($fila['producto']) . "</td>
-                                <td>" . htmlspecialchars($fila['cantidad']) . "</td>
-                                <td>" . htmlspecialchars($fila['precio']) . "</td>
-                                <td>" . htmlspecialchars($fila['fecha']) . "</td>
+                                <td>" . htmlspecialchars($fila['id_usuario']) . "</td>
+                                <td>" . htmlspecialchars($fila['id_membresia']) . "</td>
+                                <td>" . htmlspecialchars($fila['nombre_gimnasio']) . "</td>
+                                <td>" . htmlspecialchars($fila['total']) . "</td>
                               </tr>";
                     }
                 } else {
