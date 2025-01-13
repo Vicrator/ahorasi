@@ -4,7 +4,7 @@ session_start();
 if (empty($_GET["id"])) {
     //echo '<div class="alert alert-danger text-center" >User o password vacios</div>';         
 } else {
-    $id = $_POST["usuario"];
+    $id =$_GET["id"];
     $sql = $conexion->prepare("SELECT * FROM membresias WHERE id_membresia = ? ");
     $sql->bind_param("i", $id);
     $sql->execute();
