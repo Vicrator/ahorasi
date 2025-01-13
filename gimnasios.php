@@ -1,6 +1,7 @@
 <?php
 session_start();
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -45,66 +46,64 @@ session_start();
                 <li><a href="index.php">Inicio</a></li>
                 <li><a href="gimnasios.php">Gimnasio</a></li>
                 <li><a href="catalogo.php">Membresias</a></li>
-               <?php
+                <?php
                 if (isset($_SESSION["gimnasio"])) {
-                ?>                    <li><a href="catalogo.php">Reportes</a></li>
+                ?> <li><a href="catalogo.php">Reportes</a></li>
 
-               <?php
+                <?php
                 }
-                ?>               <?php
+                ?> <?php
 
-                if (isset($_SESSION["Usuario"])) {
-                ?>                    <div class="sesion ">
+                    if (isset($_SESSION["Usuario"])) {
+                    ?> <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
                         <ul class="Menu_vertical">
                             <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                         </ul>
                     </div>
-               <?php
-                }
-                elseif (isset($_SESSION["gimnasio"])) {
+                <?php
+                    } elseif (isset($_SESSION["gimnasio"])) {
 
-                ?>                    <div class="sesion ">
+                ?> <div class="sesion ">
                         <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
                         <ul class="Menu_vertical">
                             <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                         </ul>
                     </div>
-               <?php
-                } else {
-                ?>                    <div class="sesion sesionmenu" style="margin: 0px;">
+                <?php
+                    } else {
+                ?> <div class="sesion sesionmenu" style="margin: 0px;">
                         <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
 
                     </div>
-               <?php
-                }
+                <?php
+                    }
                 ?>
             </ul>
         </div>
-       <?php
+        <?php
         if (isset($_SESSION["Usuario"])) {
-        ?>            <div class="sesion sesionmenu">
+        ?> <div class="sesion sesionmenu">
                 <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["Usuario"] ?></p>
                 <ul class="Menu_vertical">
                     <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                 </ul>
             </div>
-       <?php
-        }
-        elseif (isset($_SESSION["gimnasio"])) {
-        ?>            <div class="sesion ">
+        <?php
+        } elseif (isset($_SESSION["gimnasio"])) {
+        ?> <div class="sesion ">
                 <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
                 <ul class="Menu_vertical">
                     <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
                 </ul>
             </div>
-       <?php
+        <?php
         } else {
-        ?>            <div class="sesion sesionmenu" style="margin: 0px;">
+        ?> <div class="sesion sesionmenu" style="margin: 0px;">
                 <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
 
             </div>
-       <?php
+        <?php
         }
         ?>
     </header>
@@ -114,34 +113,33 @@ session_start();
 
     <div class="container">
 
-       <?php
+        <?php
         //require './phpfull/conexion.php';
         include("phpfull/conexion.php");
 
 
         $con = $conexion;
 
-        if(isset($_SESSION["gimnasio"])) {
-            $idgym = $_SESSION["Usgimnasio"]["id"];
-            $sql = $con->prepare("SELECT * FROM gimnasio WHERE id_gimnasio=$idgym");    
-        }
-        else{
+        if (isset($_SESSION["gimnasio"])) {
+            $idgym = $_SESSION["gimnasio"];
+            $sql = $con->prepare("SELECT * FROM gimnasio WHERE Usuario=$idgym");
+        } else {
             $sql = $con->prepare("SELECT * FROM gimnasio ");
         }
-        
+
         $sql->execute();
         $resultado = $sql->get_result();
 
 
-        ?>        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-           <?php
+        ?> <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <?php
             foreach ($resultado as $row) {
                 $Usuario = $row["Usuario"];
                 $Cadena = $row["nombre_cadena"];
                 $sucursal = $row["nombre_sucursal"];
                 $ubicacion = $row["ubicacion"];
                 $idmem = $row["id_gimnasio"];
-            ?>                <div class="col">
+            ?> <div class="col">
                     <div class="card shadow-sm" style="border: 4px greenyellow solid; ">
                         <img src="img/Gymnasios/<?php echo $idmem ?>.jpeg" height="202px">
                         <div class="card-body">
@@ -157,7 +155,7 @@ session_start();
                         </div>
                     </div>
                 </div>
-           <?php
+            <?php
             }
             ?>
 
