@@ -4,7 +4,7 @@ include("conexion.php");
 
 if (isset($_GET['id_membresia'])) {
     $id_membresia =$_GET['id_membresia']; 
-    $sql = $conexion->prepare("UPDATE membresias SET activo = 0 WHERE id = ?");
+    $sql = $conexion->prepare("UPDATE membresias SET activo = 0 WHERE id_membresia = ?");
     $sql->bind_param("i", $id_membresia);
     $sql->execute();
         // Redirige con un mensaje de éxito
