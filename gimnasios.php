@@ -48,7 +48,7 @@ session_start();
                 <li><a href="catalogo.php">Membresias</a></li>
                 <?php
                 if (isset($_SESSION["gimnasio"])) {
-                ?> <li><a href="catalogo.php">Reportes</a></li>
+                ?> <li><a href="reportes.php">Reportes</a></li>
 
                 <?php
                 }

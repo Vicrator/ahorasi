@@ -1,3 +1,16 @@
+<?php
+include ("phpfull/conexion.php");
+session_start();
+
+$nombreGimnasio = $_SESSION["gimnasio"];
+
+// Consulta para obtener las compras del gimnasio
+$query = $conexion->prepare("SELECT * FROM compras WHERE nombre_gimnasio = ?");
+$query->bind_param("s", $nombreGimnasio);
+$query->execute();
+$resultado = $query->get_result();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,12 +32,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GymPass</title>
-    <script src="https://www.paypal.com/sdk/js?client-id=AfaycSjILuybCuvD-t2ppA2OHG_Kno4vQOLmSg_H0VkdsDQZaXhgSyALkKQJBGHFF32YmCkXonwAy449&currency=MXN"></script>
 
 </head>
 
-
 <body>
+
+
+
 
     <header>
         <div class="logo">
@@ -68,8 +82,9 @@
                     </div>
                 <?php
                     } else {
-                ?> <div class="sesion" style="margin: 0px;">
+                ?> <div class="sesion sesionmenu" style="margin: 0px;">
                         <a href="iniciousuario.php"><i class="fa-solid fa-user"></i></a>
+
                     </div>
                 <?php
                     }
@@ -86,7 +101,7 @@
             </div>
         <?php
         } elseif (isset($_SESSION["gimnasio"])) {
-        ?> <div class="sesion sesionmenu">
+        ?> <div class="sesion ">
                 <p class="btn btn-success"><i class="fa-regular fa-user sesiones"></i><?= $_SESSION["gimnasio"] ?></p>
                 <ul class="Menu_vertical">
                     <li><a href="phpfull/cerrarsesion.php">Cerrar sesion</a></li>
@@ -105,42 +120,72 @@
 
 
 
-
-    <div class="contenedor">
-        <?php
-        if(!isset($_GET["mensaje"])){
-            echo $_GET["mensaje"];
-        }
-        ?>
-        <div id="button-paypal"></div>
+    <div class="container mt-5">
+        <h1 class="mb-4">Reporte de Compras para el Gimnasio: <?= htmlspecialchars($nombreGimnasio) ?></h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                if ($resultado->num_rows > 0) {
+                    while ($fila = $resultado->fetch_assoc()) {
+                        echo "<tr>
+                                <td>" . htmlspecialchars($fila['id']) . "</td>
+                                <td>" . htmlspecialchars($fila['producto']) . "</td>
+                                <td>" . htmlspecialchars($fila['cantidad']) . "</td>
+                                <td>" . htmlspecialchars($fila['precio']) . "</td>
+                                <td>" . htmlspecialchars($fila['fecha']) . "</td>
+                              </tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='5' class='text-center'>No se encontraron registros</td></tr>";
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
-    <script>
-        paypal.Buttons({
-            style: {
-                color: 'blue',
-                shape: 'pill',
-                label: 'pay'
-            },
-            createOrder: function(data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: <?=$_GET["precio"]?> // Monto de la transacción
-                        }
-                    }]
-                });
-            },
-            onApprove:function(data,actions){
-                actions.order.capture().then(function(detalles){
-                    window.location.href="phpfull/pago.php?id=<?=$_GET["id"]?>";
-                });
-                
-            },
-            onCancel:function(data){
-                alert("EL PAGO FUE CANCELADO");
-            }
-        }).render("#button-paypal");
-    </script>
+
+
+
+    <div class="container-fluid">
+        <div class="piedepagina">
+            <div class="terminos">
+                <a href="#">Terminos y condiciones</a>
+                <a href="#">Politicas de privacidad</a>
+                <a href="#">Volver al inicio</a>
+
+            </div>
+
+            <div class="logo">
+                <img src="img/logo2-removebg-preview.png" alt="" height="100%">
+            </div>
+
+            <div class="redes">
+                <!-- Facebook -->
+                <i class="fab fa-facebook-f"></i>
+
+                <!-- Twitter -->
+                <i class="fab fa-twitter"></i>
+
+                <!-- Instagram -->
+                <i class="fab fa-instagram"></i>
+
+                <!-- Linkedin -->
+                <i class="fab fa-linkedin-in"></i>
+                <!-- Whatsapp -->
+                <i class="fab fa-whatsapp"></i>
+
+            </div>
+
+        </div>
+    </div>
 </body>
 
 </html>
