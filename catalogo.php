@@ -112,8 +112,8 @@ session_start();
 
 
     <div class="container">
-    <?php
-        if(isset($_GET["mensaje"])){
+        <?php
+        if (isset($_GET["mensaje"])) {
             echo $_GET["mensaje"];
         }
         ?>
@@ -141,7 +141,7 @@ session_start();
                 $precio = $row["precio"];
                 $descripcion = $row["descripcion"];
                 $idmem = $row["id_membresia"];
-                $activo= $row["Activo"] ==1? "Activo":"Inactivo";
+                $activo = $row["Activo"] == 1 ? "Activo" : "Inactivo";
             ?> <div class="col">
                     <div class="card shadow-sm">
                         <img src="img/Membresias/<?php echo $idmem ?>.jpeg" height="202px">
@@ -158,9 +158,23 @@ session_start();
                             } else {
                             ?> <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <p>Estado <?= $activo?></p>
+                                        <p>Estado <?= $activo ?></p>
+                                        <?php
+                                        if ($activo == 1) {
+
+                                        ?>
+                                            <a href="phpfull/eliminarmembresia.php?id_membresia=<?= $idmem ?>" class="btn btn-success">inhabilitar</a>
+                                        <?php
+                                        } else {
+                                        ?>
+
+                                            ?>
+                                            <a href="phpfull/eliminarmembresia.php?id_memb=<?= $idmem ?>" class="btn btn-success">Habilitar</a>
+                                        <?php
+                                        }
+                                        ?>
                                     </div>
-                                    <a href="phpfull/eliminarmembresia.php?id_membresia=<?=$idmem?>" class="btn btn-success">Eliminar</a>
+
                                 </div>
                             <?php
                             }
