@@ -200,7 +200,7 @@ session_start();
                 $idmem = $row["id_gimnasio"];
             ?>
                 <div class="card" style="width: 18rem; margin-top: 30px;">
-                    <img src="img/logo.jpeg" class="card-img-top" alt="...">
+                    <img src="img/Gymnasios/<?php echo $idmem ?>.jpeg" class="card-img-top" alt="IMG gimnasio no encontrada">
                     <div class="card-body">
                         <h5 class="card-title"><?= $Cadena ?></h5>
                         <p class="card-text">
