@@ -121,7 +121,14 @@ session_start();
 
         $con = $conexion;
 
-        $sql = $con->prepare("SELECT * FROM gimnasio ");
+        if(isset($_SESSION["gimnasio"])) {
+            $idgym = $_SESSION["Usgimnasio"]["id"];
+            $sql = $con->prepare("SELECT * FROM gimnasio WHERE id_gimnasio=$idgym");    
+        }
+        else{
+            $sql = $con->prepare("SELECT * FROM gimnasio ");
+        }
+        
         $sql->execute();
         $resultado = $sql->get_result();
 
