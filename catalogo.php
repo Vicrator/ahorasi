@@ -160,7 +160,7 @@ session_start();
                                     <div class="btn-group">
                                         <p>Estado <?= $activo?></p>
                                         <?php
-                                        if ($activo == 1) {
+                                        if ($activo == "Activo") {
 
                                         ?>
                                             <a href="phpfull/eliminarmembresia.php?id_membresia=<?= $idmem ?>" class="btn btn-success">inhabilitar</a>
